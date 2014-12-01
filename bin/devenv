@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+SCRIPT_HOME="$( cd "$( dirname "$0" )" && pwd )"
+HOST_NAME="devenv1"
+
+cd $SCRIPT_HOME/..
+
+case "$1" in
+	ssh)
+		vagrant ssh $HOST_NAME
+		;;
+	init)
+		vagrant ssh -c "sudo /vagrant/bin/devenv-inner.sh init" $HOST_NAME
+		;;
+	*)
+		vagrant ssh -c "sudo /vagrant/bin/devenv-inner.sh $1 $2" $HOST_NAME
+		;;
+esac
+
+cd - > /dev/null

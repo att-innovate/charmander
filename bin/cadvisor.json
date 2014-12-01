@@ -1,0 +1,35 @@
+{
+    "id": "cadvisor",
+    "dockerimage": "google/cadvisor:0.4.1",
+    "mem": "100",
+    "sla": "one-per-node",
+    "volumes": [
+        {
+            "host_path":"/rootfs",
+            "container_path":"/rootfs",
+            "mode":"ro"
+        },
+        {
+            "host_path":"/var/run",
+            "container_path":"/var/run",
+            "mode":"rw"
+        },
+        {
+            "host_path":"/sys",
+            "container_path":"/sys",
+            "mode":"ro"
+        },
+        {
+            "host_path":"/var/lib/docker",
+            "container_path":"/var/lib/docker/",
+            "mode":"ro"
+        }
+    ],
+    "ports": [
+        {
+            "host_port":"31500",
+            "container_port":"8080"
+        }
+    ]
+
+}

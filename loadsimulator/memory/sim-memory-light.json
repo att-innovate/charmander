@@ -1,0 +1,8 @@
+{
+    "container": {"image": "docker:///docker.registry.foundry:80/sim-memory"},
+    "id": "memorysimulator-light",
+    "cmd": "/prog/sim_mem.py -i -l=light",
+    "instances": "1",
+    "cpus": ".25",
+    "mem": "100"
+}

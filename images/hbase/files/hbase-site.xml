@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>hbase.rootdir</name>
+        <value>file:///data</value>
+    </property>
+    <property>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hbase.master.port</name>
+        <value>16000</value>
+    </property>
+    <property>
+        <name>hbase.master.ipc.address</name>
+        <value>0.0.0.0</value>
+    </property>
+    <property>
+        <name>hbase.master.info.port</name>
+        <value>16010</value>
+    </property>
+    <property>
+        <name>hbase.regionserver.port</name>
+        <value>16020</value>
+    </property>
+    <property>
+        <name>hbase.regionserver.ipc.address</name>
+        <value>0.0.0.0</value>
+    </property>
+    <property>
+        <name>hbase.regionserver.info.port</name>
+        <value>16030</value>
+    </property>
+    <property>
+        <name>hbase.regionserver.optionalcacheflushinterval</name>
+        <value>0</value>
+    </property>
+    <property>
+        <name>hbase.zookeeper.quorum</name>
+        <value>{{ZOOKEEPER_IP}}</value>
+    </property>
+</configuration>
