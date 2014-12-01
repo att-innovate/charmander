@@ -16,3 +16,9 @@ slave_cpus   : 2
 master_ipbase  : "172.31.1."
 slave_ipbase   : "172.31.2."
 
+# Name of slave-node assigned to do analytics
+# All other slave nodes become "lab-nodes"
+################################################
+analytics_node : "slave1"
+
+

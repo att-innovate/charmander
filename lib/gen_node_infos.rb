@@ -30,5 +30,7 @@ def gen_node_infos(cluster_yml)
     }
   end
 
-  return { :master => master_infos, :slave=>slave_infos }
+  analytics_node = cluster_yml['analytics_node']
+
+  return { :master => master_infos, :slave=>slave_infos, :analytics_node=>analytics_node }
 end

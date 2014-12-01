@@ -76,11 +76,12 @@ Vagrant.configure("2") do |config|
         pkg_once_cmd << 'echo zk://master1:2181/mesos | dd of=/etc/mesos/zk; '
         pkg_once_cmd << 'stop mesos-slave; rm /etc/init/mesos-slave.conf; '
       elsif slave?(ninfo[:hostname]) then
+        nodetype = ninfo[:hostname] == ninfos[:analytics_node] ? 'analytics' : 'lab'
         pkg_once_cmd << "apt-get -y install mesos=#{MESOS_PACKAGE_VERSION}; "
         pkg_once_cmd << 'mkdir -p /etc/mesos-slave; '
         pkg_once_cmd << 'echo docker,mesos | dd of=/etc/mesos-slave/containerizers; '
         pkg_once_cmd << 'echo 5mins | dd of=/etc/mesos-slave/executor_registration_timeout; '
-        pkg_once_cmd << "echo nodename:#{ninfo[:hostname]} | dd of=/etc/mesos-slave/attributes; "
+        pkg_once_cmd << "echo 'nodename:#{ninfo[:hostname]};nodetype:#{nodetype}' | dd of=/etc/mesos-slave/attributes; "
         pkg_once_cmd << "echo #{ninfo[:ip]} | dd of=/etc/mesos-slave/ip; "
         pkg_once_cmd << 'echo zk://master1:2181/mesos | dd of=/etc/mesos/zk; '
         pkg_once_cmd << 'stop mesos-master; rm /etc/init/mesos-master.conf; stop zookeeper; rm /etc/init/zookeeper.conf; '
