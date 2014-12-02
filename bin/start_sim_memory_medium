@@ -1,3 +1,0 @@
-#!/bin/bash
-
-curl -v -X POST -T loadsimulator/memory/sim-memory-medium.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.3.11:8080/v2/apps
