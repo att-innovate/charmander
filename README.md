@@ -1,6 +1,6 @@
-#Mesos - Marathon - Docker - cAdvisor - Devenv (OpenTSDB, HBase, Redis)
+#Charmander Lab
 
-Vagrant script to build up a test environment with 1 Zookeeper, 1 Mesos-Master, 2 Mesos-Slaves, 1 Marathon, and 1 Devenv node.
+... big refactoring going on until end of December .. read-me is outdated.
 
 ### Prerequisites
 
