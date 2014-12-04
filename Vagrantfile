@@ -10,7 +10,7 @@ ninfos = gen_node_infos(conf)
 
 BOX_NAME = "ubuntu-dev-trusty"
 BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
-MESOS_PACKAGE_VERSION = "0.20.1-1.0.ubuntu1404"
+MESOS_PACKAGE_VERSION = "0.21.0-1.0.ubuntu1404"
 
 Vagrant.require_version ">= 1.6.0"
 
