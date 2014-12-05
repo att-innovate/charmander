@@ -3,5 +3,5 @@
     "dockerimage": "stress",
     "mem": "100",
     "nodetype": "lab",
-    "arguments": ["--vm-bytes 60M", "--vm 1"]
+    "arguments": ["--vm-bytes", "60M", "--vm", "1"]
 }
