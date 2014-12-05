@@ -2,11 +2,5 @@
 
 set -e
 
-SCRIPT_HOME="$( cd "$( dirname "$0" )" && pwd )"
 HOST_NAME="master1"
-
-cd $SCRIPT_HOME/..
-
 vagrant ssh -c "sudo initctl restart charmander-scheduler" $HOST_NAME
-
-cd - > /dev/null
