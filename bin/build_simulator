@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+SCRIPT_HOME="$( cd "$( dirname "$0" )" && pwd )"
+
+cd $SCRIPT_HOME/..
+
+vagrant ssh -c "sudo /vagrant/bin/invm/build_simulator.sh" slave2
+vagrant ssh -c "sudo /vagrant/bin/invm/build_simulator.sh" slave3
+
+cd - > /dev/null

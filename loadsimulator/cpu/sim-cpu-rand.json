@@ -1,7 +1,0 @@
-{
-    "container": {"image": "docker:///docker.registry.foundry:80/sim-cpu-rand"},
-    "id": "cpusimulator-random",
-    "instances": "1",
-    "cpus": ".25",
-    "mem": "25"
-}

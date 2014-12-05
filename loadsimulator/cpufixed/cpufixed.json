@@ -1,0 +1,6 @@
+{
+    "id": "cpufixed",
+    "dockerimage": "cpufixed",
+    "mem": "20",
+    "nodetype": "lab"
+}

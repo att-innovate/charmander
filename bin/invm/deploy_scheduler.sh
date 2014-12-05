@@ -18,6 +18,6 @@ cp $DIR/bin/charmander-scheduler /usr/local/bin/
 if [ -e $UPSTART ]; then
 	service charmander-scheduler start
 else
-    cp /vagrant/bin/charmander-scheduler.conf /etc/init/
+    cp /vagrant/bin/invm/charmander-scheduler.conf /etc/init/
 	service charmander-scheduler start
 fi

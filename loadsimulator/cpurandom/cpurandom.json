@@ -1,0 +1,6 @@
+{
+    "id": "cpurandom",
+    "dockerimage": "cpurandom",
+    "mem": "20",
+    "nodetype": "lab"
+}

@@ -9,7 +9,7 @@ import (
 func main() {
   rand.Seed(42)
   for {
-    load := rand.Intn(8000)
+    load := rand.Intn(10000)
     delay := rand.Intn(10)
     fmt.Println("Load: ", load)
 

@@ -7,6 +7,6 @@ HOST_NAME="master1"
 
 cd $SCRIPT_HOME/..
 
-vagrant ssh -c "sudo /vagrant/bin/deploy_scheduler-inner.sh" $HOST_NAME
+vagrant ssh -c "sudo /vagrant/bin/invm/deploy_scheduler.sh" $HOST_NAME
 
 cd - > /dev/null
