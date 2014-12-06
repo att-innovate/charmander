@@ -1,3 +1,4 @@
 #!/bin/bash
 
 curl -v -X POST -T analytics/redis/redis.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/execute
+curl -v -X POST -T analytics/influxdb/influxdb.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/execute
