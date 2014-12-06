@@ -55,6 +55,7 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << "sed -i 's,DOCKER_OPTS=.*,DOCKER_OPTS=\"-d -r=false -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock\",' /etc/init/docker.conf; "
       pkg_once_cmd << 'service docker restart; sleep 5; '
       pkg_once_cmd << 'docker pull phusion/baseimage:0.9.9; '
+      pkg_once_cmd << 'docker pull busybox:ubuntu-14.04; '
       pkg_once_cmd << 'docker pull google/cadvisor:0.4.1; '
 
       # at bootup always remove old containers
