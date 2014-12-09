@@ -56,7 +56,7 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << 'service docker restart; sleep 5; '
       pkg_once_cmd << 'docker pull phusion/baseimage:0.9.9; '
       pkg_once_cmd << 'docker pull busybox:ubuntu-14.04; '
-      pkg_once_cmd << 'docker pull google/cadvisor:0.4.1; '
+      pkg_once_cmd << 'docker pull google/cadvisor:0.6.2; '
 
       # at bootup always remove old containers
       pkg_always_cmd << 'docker ps -a | grep \'Exit\' | awk \'{print $1}\' | xargs -r docker rm; '

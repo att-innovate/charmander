@@ -1,11 +1,11 @@
 {
     "id": "cadvisor",
-    "dockerimage": "google/cadvisor:0.4.1",
+    "dockerimage": "google/cadvisor:0.6.2",
     "mem": "50",
     "sla": "one-per-node",
     "volumes": [
         {
-            "host_path":"/rootfs",
+            "host_path":"/",
             "container_path":"/rootfs",
             "mode":"ro"
         },
