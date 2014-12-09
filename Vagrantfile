@@ -71,7 +71,7 @@ Vagrant.configure("2") do |config|
         pkg_once_cmd << 'mkdir -p /etc/mesos-master; '
         pkg_once_cmd << "echo #{ninfo[:ip]} | dd of=/etc/mesos-master/hostname; "
         pkg_once_cmd << "echo #{ninfo[:ip]} | dd of=/etc/mesos-master/ip; "
-        pkg_once_cmd << 'echo mesosenv | dd of=/etc/mesos-master/cluster; '
+        pkg_once_cmd << 'echo charmander | dd of=/etc/mesos-master/cluster; '
         pkg_once_cmd << 'echo in_memory | dd of=/etc/mesos-master/registry; '
         pkg_once_cmd << 'echo 1 | dd of=/etc/mesos-master/quorum; '
         pkg_once_cmd << 'echo zk://master1:2181/mesos | dd of=/etc/mesos/zk; '
