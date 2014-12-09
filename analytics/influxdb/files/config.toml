@@ -186,7 +186,7 @@ concurrent-shard-query-limit = 10
 
 [wal]
 
-dir   = "/tmp/influxdb/development/wal"
+dir   = "/data/wal"
 flush-after = 1000 # the number of writes after which wal will be flushed, 0 for flushing on every write
 bookmark-after = 1000 # the number of writes after which a bookmark will be created
 
