@@ -6,8 +6,13 @@
     "nodetype": "analytics",
     "volumes": [
         {
-            "host_path":"/data/influxdb",
+            "host_path":"/analytics/data/influxdb",
             "container_path":"/data/",
+            "mode":"rw"
+        },
+        {
+            "host_path":"/analytics/log/influxdb",
+            "container_path":"/log/",
             "mode":"rw"
         }
     ],

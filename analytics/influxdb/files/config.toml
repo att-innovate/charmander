@@ -18,15 +18,15 @@ reporting-disabled = false
 [logging]
 # logging level can be one of "fine", "debug", "info", "warn" or "error"
 level  = "info"
-file   = "influxdb.log"         # stdout to log to standard out, or syslog facility
+file   = "/log/influxdb.log"         # stdout to log to standard out, or syslog facility
 
 # Configure the admin server
 [admin]
-port   = 8083              # binding is disabled if the port isn't set
+port = 8083              # binding is disabled if the port isn't set
 
 # Configure the http api
 [api]
-port     = 8086    # binding is disabled if the port isn't set
+port = 8086    # binding is disabled if the port isn't set
 # ssl-port = 8084    # Ssl support is enabled if you set a port and cert
 # ssl-cert = /path/to/cert.pem
 

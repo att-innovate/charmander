@@ -5,7 +5,7 @@
     "nodetype": "analytics",
     "volumes": [
         {
-            "host_path":"/data/redis",
+            "host_path":"/analytics/data/redis",
             "container_path":"/data/",
             "mode":"rw"
         }
