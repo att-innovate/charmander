@@ -11,7 +11,8 @@ RUN tar xzf redis-$REDISVERSION.tar.gz
 RUN cd redis-$REDISVERSION && make
 RUN ln -sfn redis-$REDISVERSION redis
 
-VOLUME [ "/data" ]
+#VOLUME [ "/data" ]
+RUN mkdir /data
 
 ADD files/redis.conf redis.conf
 

@@ -2,15 +2,15 @@
 set -e
 
 ANALYTICS_DIR=/vagrant/analytics
-ANALYTICS_DATA_DIR=/analytics/data
+# ANALYTICS_DATA_DIR=/analytics/data
 ANALYTICS_LOG_DIR=/analytics/log
 
-mkdir -p $ANALYTICS_DATA_DIR/redis
-mkdir -p $ANALYTICS_DATA_DIR/influxdb
+# mkdir -p $ANALYTICS_DATA_DIR/redis
+# mkdir -p $ANALYTICS_DATA_DIR/influxdb
 
 mkdir -p $ANALYTICS_LOG_DIR/influxdb
 
-chown -R 777 $ANALYTICS_DATA_DIR
+# chown -R 777 $ANALYTICS_DATA_DIR
 chown -R 777 $ANALYTICS_LOG_DIR
 
 

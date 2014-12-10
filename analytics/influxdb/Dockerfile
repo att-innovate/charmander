@@ -11,8 +11,10 @@ RUN wget https://s3.amazonaws.com/influxdb/influxdb_${INFLUXDB_VERSION}_amd64.de
   dpkg -i influxdb_${INFLUXDB_VERSION}_amd64.deb && \
   rm influxdb_${INFLUXDB_VERSION}_amd64.deb
 
-VOLUME [ "/data" ]
+#VOLUME [ "/data" ]
+RUN mkdir /data
 VOLUME [ "/log" ]
+
 
 # Admin server
 EXPOSE 8083

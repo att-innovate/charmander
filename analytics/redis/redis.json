@@ -3,13 +3,6 @@
     "dockerimage": "redis",
     "mem": "100",
     "nodetype": "analytics",
-    "volumes": [
-        {
-            "host_path":"/analytics/data/redis",
-            "container_path":"/data/",
-            "mode":"rw"
-        }
-    ],
     "ports": [
         {
             "host_port":"31600",
