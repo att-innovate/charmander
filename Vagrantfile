@@ -88,6 +88,8 @@ Vagrant.configure("2") do |config|
         pkg_once_cmd << 'stop mesos-master; rm /etc/init/mesos-master.conf; stop zookeeper; rm /etc/init/zookeeper.conf; '
       end
 
+      pkg_once_cmd << "shutdown -h now; "
+
       cfg.vm.provision :shell, :inline => pkg_once_cmd,   :run => :once   # installation of all the software/services
       cfg.vm.provision :shell, :inline => pkg_always_cmd, :run => :always # gets executed at every reboot
     end
