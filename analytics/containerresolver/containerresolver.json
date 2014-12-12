@@ -2,7 +2,7 @@
     "id":          "containerresolver",
     "dockerimage": "containerresolver",
     "mem":         "20",
-    "nodetype":    "analytics",
+    "sla":         "one-per-node",
     "notmetered":   true,
     "volumes": [
         {

@@ -8,4 +8,10 @@ cd $SCRIPT_HOME/..
 
 vagrant ssh -c "sudo /vagrant/bin/invm/build_analytics.sh" slave1
 
+# tooling needed on each slave until mesos returns containerid as part of status message
+vagrant ssh -c "sudo /vagrant/bin/invm/build_analytics_tooling.sh" slave1
+vagrant ssh -c "sudo /vagrant/bin/invm/build_analytics_tooling.sh" slave2
+vagrant ssh -c "sudo /vagrant/bin/invm/build_analytics_tooling.sh" slave3
+
+
 cd - > /dev/null
