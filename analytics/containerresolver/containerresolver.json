@@ -1,0 +1,20 @@
+{
+    "id":          "containerresolver",
+    "dockerimage": "containerresolver",
+    "mem":         "20",
+    "nodetype":    "analytics",
+    "notmetered":   true,
+    "volumes": [
+        {
+            "host_path":"/tmp/mesos",
+            "container_path":"/containers/",
+            "mode":"ro"
+        }
+    ],
+    "ports": [
+        {
+            "host_port":"31300",
+            "container_port":"8080"
+        }
+    ]
+}
