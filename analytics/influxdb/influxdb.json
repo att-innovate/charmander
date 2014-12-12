@@ -1,9 +1,10 @@
 {
-    "id": "influxdb",
+    "id":          "influxdb",
     "dockerimage": "influxdb",
-    "mem": "200",
-    "cpus": "1",
-    "nodetype": "analytics",
+    "mem":         "200",
+    "cpus":        "1",
+    "nodetype":    "analytics",
+    "notmetered":  true,
     "volumes": [
         {
             "host_path":"/analytics/log/influxdb",

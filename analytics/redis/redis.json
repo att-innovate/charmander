@@ -1,8 +1,9 @@
 {
-    "id": "redis",
+    "id":          "redis",
     "dockerimage": "redis",
-    "mem": "100",
-    "nodetype": "analytics",
+    "mem":         "100",
+    "nodetype":    "analytics",
+    "notmetered":  true,
     "ports": [
         {
             "host_port":"31600",
