@@ -1,0 +1,8 @@
+{
+    "id":          "heapster",
+    "dockerimage": "heapster",
+    "mem":         "20",
+    "nodetype":    "analytics",
+    "notmetered":  true
+
+}

@@ -1,6 +1,8 @@
 #/bin/bash
 set -e
 
+DIR=$PWD
+
 ANALYTICS_DIR=/vagrant/analytics
 # ANALYTICS_DATA_DIR=/analytics/data
 ANALYTICS_LOG_DIR=/analytics/log
@@ -26,4 +28,20 @@ cd $INFLUXDB_DIR &&
     image_name="influxdb" &&
 	echo "Building $image_name" &&
 	docker build -t $image_name .
+
+
+HEAPSTER_DIR=$ANALYTICS_DIR/heapster
+
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$DIR
+
+go get -u github.com/att-innovate/charmander-heapster
+go install -a github.com/att-innovate/charmander-heapster
+cp $DIR/bin/charmander-heapster $HEAPSTER_DIR
+cd $HEAPSTER_DIR &&
+    image_name="heapster" &&
+	echo "Building $image_name" &&
+	docker build -t $image_name .
+
+
 
