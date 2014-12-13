@@ -1,7 +1,7 @@
 {
     "id":          "heapster",
     "dockerimage": "heapster",
-    "mem":         "20",
+    "mem":         "50",
     "nodetype":    "analytics",
     "notmetered":  true
 
