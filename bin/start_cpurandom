@@ -1,3 +1,3 @@
 #!/bin/bash
 
-curl -v -X POST -T loadsimulator/cpurandom/cpurandom.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/execute
+curl -X POST -T loadsimulator/cpurandom/cpurandom.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/execute

@@ -11,6 +11,8 @@ RUN wget https://s3.amazonaws.com/influxdb/influxdb_${INFLUXDB_VERSION}_amd64.de
   dpkg -i influxdb_${INFLUXDB_VERSION}_amd64.deb && \
   rm influxdb_${INFLUXDB_VERSION}_amd64.deb
 
+ADD files/config.toml config.toml
+
 #VOLUME [ "/data" ]
 RUN mkdir /data
 VOLUME [ "/log" ]
@@ -20,7 +22,5 @@ VOLUME [ "/log" ]
 EXPOSE 8083
 # HTTP API
 EXPOSE 8086
-
-ADD files/config.toml config.toml
 
 CMD /usr/bin/influxdb -config=config.toml
