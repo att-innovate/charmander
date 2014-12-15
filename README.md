@@ -85,6 +85,17 @@ Deploy Analytics stack (InfluxDB, Redis, Heapster, Spark) on the slave1 as confi
 ./bin/start_analytics
 ```
 
+Redis and InfluxDB's WebUI will become available on slave1 at:
+
+Redis: [http://172.31.2.11:31610](http://172.31.2.11:31610)
+
+InfluxDB: [http://172.31.2.11:31400](http://172.31.2.11:31400)
+
+InfluxDB username and password: root
+
+InfluxDB Hostname and Port Settings: 172.31.2.11 31410 and no SSL
+
+
 ### Reset the Charmander environment
 
 To reset the environment in to a fresh state:
@@ -105,16 +116,6 @@ vagrant up
 ./bin/start_cadvisor
 ./bin/start_analytics
 ```
-
-Redis and InfluxDB's WebUI will become available on slave1 at:
-
-Redis: [http://172.31.2.11:31610](http://172.31.2.11:31610)
-
-InfluxDB: [http://172.31.2.11:31400](http://172.31.2.11:31400)
-
-InfluxDB username and password: root
-
-InfluxDB Hostname and Port Settings: 172.31.2.11 31410 and no SSL
 
 ### Temporarily suspend test environment
 
