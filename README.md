@@ -117,12 +117,6 @@ vagrant up
 ./bin/start_analytics
 ```
 
-### Temporarily suspend test environment
-
-```
-vagrant suspend
-```
-
 ### Destroy test environment
 
 ```
