@@ -27,4 +27,4 @@ RUN npm install -g redis-commander
 
 EXPOSE 8081
 
-CMD redis/src/redis-server redis.conf & redis-commander
+ENTRYPOINT redis/src/redis-server redis.conf & redis-commander

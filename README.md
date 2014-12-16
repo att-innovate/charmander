@@ -113,6 +113,7 @@ To reboot in to a fresh test-environment:
 ```
 vagrant halt
 vagrant up
+./bin/reset_scheduler
 ./bin/start_cadvisor
 ./bin/start_analytics
 ```

@@ -12,7 +12,7 @@ BOX_NAME = "ubuntu-dev-trusty"
 BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 MESOS_PACKAGE_VERSION = "0.21.0-1.0.ubuntu1404"
 
-Vagrant.require_version ">= 1.6.0"
+Vagrant.require_version ">= 1.7.1"
 
 Vagrant.configure("2") do |config|
   config.vm.box = BOX_NAME
@@ -40,12 +40,14 @@ Vagrant.configure("2") do |config|
 
       pkg_always_cmd = 'echo "done"; '
 
+      # install aufs driver for docker to prevent race condition issue with devicemapper
+      pkg_once_cmd << 'apt-get install -y linux-image-extra-$(uname -r) aufs-tools; '
+
       # Install docker
       pkg_once_cmd << 'curl -s https://get.docker.io/ubuntu/ | sudo sh; '
       pkg_once_cmd << "sed -i 's,GRUB_CMDLINE_LINUX=\"\",GRUB_CMDLINE_LINUX=\"cgroup_enable=memory swapaccount=1\",' /etc/default/grub; "
       pkg_once_cmd << 'update-grub; '
-      pkg_once_cmd << "sed -i 's,DOCKER_OPTS=.*,DOCKER_OPTS=\"-d -r=false -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock\",' /etc/init/docker.conf; "
-      pkg_once_cmd << 'service docker restart; sleep 5; '
+
       pkg_once_cmd << 'docker pull phusion/baseimage:0.9.9; '
       pkg_once_cmd << 'docker pull busybox:ubuntu-14.04; '
       pkg_once_cmd << 'docker pull google/cadvisor:0.6.2; '

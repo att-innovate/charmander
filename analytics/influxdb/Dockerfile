@@ -23,4 +23,4 @@ EXPOSE 8083
 # HTTP API
 EXPOSE 8086
 
-CMD /usr/bin/influxdb -config=config.toml
+ENTRYPOINT /usr/bin/influxdb -config=config.toml
