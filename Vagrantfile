@@ -10,7 +10,10 @@ ninfos = gen_node_infos(conf)
 
 BOX_NAME = "ubuntu-dev-trusty"
 BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+
 MESOS_PACKAGE_VERSION = "0.21.0-1.0.ubuntu1404"
+DOCKER_PACKAGE_VERSION = "1.4.0"
+GO_PACKAGE_VERSION = "1.3.3"
 
 Vagrant.require_version ">= 1.7.1"
 
@@ -33,18 +36,22 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--memory", ninfo[:mem], "--cpus", ninfo[:cpus] ]
       end
 
-      # Default behaviour for initial install and for every reboot
-      pkg_once_cmd  = 'apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF; DISTRO=$(lsb_release -is | tr "[:upper:]" "[:lower:]"); CODENAME=$(lsb_release -cs); '
+      # Initialize command list for provisioning phase
+      # and add some additional keys/repository for Docker and Mesos
+      pkg_once_cmd  = 'apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9; '
+      pkg_once_cmd << 'echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list; '
+      pkg_once_cmd << 'apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF; DISTRO=$(lsb_release -is | tr "[:upper:]" "[:lower:]"); CODENAME=$(lsb_release -cs); '
       pkg_once_cmd << 'echo "deb http://repos.mesosphere.io/${DISTRO} ${CODENAME} main" | tee /etc/apt/sources.list.d/mesosphere.list; '
       pkg_once_cmd << 'apt-get update; '
 
+      # Initialize command list that gets run on every reboot
       pkg_always_cmd = 'echo "done"; '
 
       # install aufs driver for docker to prevent race condition issue with devicemapper
       pkg_once_cmd << 'apt-get install -y linux-image-extra-$(uname -r) aufs-tools; '
 
       # Install docker
-      pkg_once_cmd << 'curl -s https://get.docker.io/ubuntu/ | sudo sh; '
+      pkg_once_cmd << "apt-get install -y lxc-docker=#{DOCKER_PACKAGE_VERSION}; "
       pkg_once_cmd << "sed -i 's,GRUB_CMDLINE_LINUX=\"\",GRUB_CMDLINE_LINUX=\"cgroup_enable=memory swapaccount=1\",' /etc/default/grub; "
       pkg_once_cmd << 'update-grub; '
 
@@ -56,8 +63,8 @@ Vagrant.configure("2") do |config|
       pkg_always_cmd << 'docker ps -a | grep \'Exit\' | awk \'{print $1}\' | xargs -r docker rm; '
 
       # Install go
-      pkg_once_cmd << 'wget https://storage.googleapis.com/golang/go1.3.3.linux-amd64.tar.gz; '
-      pkg_once_cmd << 'tar -C /usr/local -xzf go1.3.3.linux-amd64.tar.gz; '
+      pkg_once_cmd << "wget https://storage.googleapis.com/golang/go#{GO_PACKAGE_VERSION}.linux-amd64.tar.gz; "
+      pkg_once_cmd << "tar -C /usr/local -xzf go#{GO_PACKAGE_VERSION}.linux-amd64.tar.gz; "
 
       # Update hosts file
       [ninfos[:master], ninfos[:slave]].flatten.each_with_index do |host, i|
