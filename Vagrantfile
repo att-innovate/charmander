@@ -12,7 +12,7 @@ BOX_NAME = "ubuntu-dev-trusty"
 BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
 MESOS_PACKAGE_VERSION = "0.21.0-1.0.ubuntu1404"
-DOCKER_PACKAGE_VERSION = "1.4.0"
+DOCKER_PACKAGE_VERSION = "1.4.1"
 GO_PACKAGE_VERSION = "1.3.3"
 
 Vagrant.require_version ">= 1.7.1"
@@ -95,7 +95,9 @@ Vagrant.configure("2") do |config|
         pkg_once_cmd << 'rm /etc/init/mesos-master.conf; rm /etc/init/zookeeper.conf; '
       end
 
-      pkg_always_cmd << "set -e; "
+      # end of command list
+      pkg_always_cmd << 'set -e'
+      pkg_once_cmd << 'echo "vagrant reload required"'
 
       cfg.vm.provision :shell, :inline => pkg_once_cmd,   :run => :once   # installation of all the software/services
       cfg.vm.provision :shell, :inline => pkg_always_cmd, :run => :always # gets executed at every reboot
