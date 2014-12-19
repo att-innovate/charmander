@@ -45,7 +45,8 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << 'apt-get update; '
 
       # Initialize command list that gets run on every reboot
-      pkg_always_cmd = 'echo "done"; '
+      # and we won't stop if some of the commands fail
+      pkg_always_cmd = 'echo "Running init script"; set +e; '
 
       # install aufs driver for docker to prevent race condition issue with devicemapper
       pkg_once_cmd << 'apt-get install -y linux-image-extra-$(uname -r) aufs-tools; '
@@ -93,6 +94,8 @@ Vagrant.configure("2") do |config|
         pkg_once_cmd << 'echo zk://master1:2181/mesos | dd of=/etc/mesos/zk; '
         pkg_once_cmd << 'rm /etc/init/mesos-master.conf; rm /etc/init/zookeeper.conf; '
       end
+
+      pkg_always_cmd << "set -e; "
 
       cfg.vm.provision :shell, :inline => pkg_once_cmd,   :run => :once   # installation of all the software/services
       cfg.vm.provision :shell, :inline => pkg_always_cmd, :run => :always # gets executed at every reboot
