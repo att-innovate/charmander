@@ -1,7 +1,7 @@
 {
     "id":          "redis",
     "dockerimage": "redis",
-    "mem":         "100",
+    "mem":         "50",
     "nodetype":    "analytics",
     "notmetered":  true,
     "ports": [

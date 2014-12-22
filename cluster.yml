@@ -4,21 +4,23 @@
 ##############################
 slave_n  : 3      # hostname will be slave1,slave2,…
 
+# Name of slave-node assigned to do analytics
+# All other slave nodes become "lab-nodes"
+################################################
+analytics_node : "slave1"
+
 # Memory and Cpu settings
 ##########################################
-master_mem   : 384
-master_cpus  : 1
-slave_mem    : 1024
-slave_cpus   : 2
+master_mem     : 384
+master_cpus    : 1
+analytics_mem  : 1536
+analytics_cpus : 2
+slave_mem      : 1024
+slave_cpus     : 2
 
 # Private ip bases
 ################################################
 master_ipbase  : "172.31.1."
 slave_ipbase   : "172.31.2."
-
-# Name of slave-node assigned to do analytics
-# All other slave nodes become "lab-nodes"
-################################################
-analytics_node : "slave1"
 
 

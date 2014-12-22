@@ -33,7 +33,11 @@ Vagrant.configure("2") do |config|
         override.vm.network :private_network, :ip => ninfo[:ip]
 
         vb.name = 'charmander-' + ninfo[:hostname]
-        vb.customize ["modifyvm", :id, "--memory", ninfo[:mem], "--cpus", ninfo[:cpus] ]
+        if ninfo[:hostname] == ninfos[:analytics][:node] then
+          vb.customize ["modifyvm", :id, "--memory", ninfos[:analytics][:mem], "--cpus", ninfos[:analytics][:cpus]]
+        else
+          vb.customize ["modifyvm", :id, "--memory", ninfo[:mem], "--cpus", ninfo[:cpus] ]
+        end
       end
 
       # Initialize command list for provisioning phase
@@ -52,7 +56,7 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << 'apt-get install -y linux-image-extra-$(uname -r) aufs-tools; '
 
       # Install docker
-      pkg_once_cmd << "apt-get install -y lxc-docker=#{DOCKER_PACKAGE_VERSION}; "
+      pkg_once_cmd << "apt-get install -y lxc-docker-#{DOCKER_PACKAGE_VERSION}; "
       pkg_once_cmd << "sed -i 's,GRUB_CMDLINE_LINUX=\"\",GRUB_CMDLINE_LINUX=\"cgroup_enable=memory swapaccount=1\",' /etc/default/grub; "
       pkg_once_cmd << 'update-grub; '
 
@@ -84,7 +88,7 @@ Vagrant.configure("2") do |config|
         pkg_once_cmd << 'echo zk://master1:2181/mesos | dd of=/etc/mesos/zk; '
         pkg_once_cmd << 'rm /etc/init/mesos-slave.conf; '
       elsif slave?(ninfo[:hostname]) then
-        nodetype = ninfo[:hostname] == ninfos[:analytics_node] ? 'analytics' : 'lab'
+        nodetype = ninfo[:hostname] == ninfos[:analytics][:node] ? 'analytics' : 'lab'
         pkg_once_cmd << "apt-get -y install mesos=#{MESOS_PACKAGE_VERSION}; "
         pkg_once_cmd << 'mkdir -p /etc/mesos-slave; '
         pkg_once_cmd << 'echo docker,mesos | dd of=/etc/mesos-slave/containerizers; '
@@ -97,7 +101,7 @@ Vagrant.configure("2") do |config|
 
       # end of command list
       pkg_always_cmd << 'set -e'
-      pkg_once_cmd << 'echo "vagrant reload required"'
+      pkg_once_cmd << 'echo "!! ---- vagrant reload required ---- !!"'
 
       cfg.vm.provision :shell, :inline => pkg_once_cmd,   :run => :once   # installation of all the software/services
       cfg.vm.provision :shell, :inline => pkg_always_cmd, :run => :always # gets executed at every reboot
