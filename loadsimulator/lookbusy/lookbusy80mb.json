@@ -1,5 +1,5 @@
 {
-    "id": "lookbusy",
+    "id": "lookbusy80",
     "dockerimage": "lookbusy",
     "mem": "100",
     "nodetype": "lab",
