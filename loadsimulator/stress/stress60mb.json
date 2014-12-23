@@ -1,7 +1,8 @@
 {
-    "id": "stress",
+    "id": "stress60",
     "dockerimage": "stress",
     "mem": "100",
+    "reshuffleable": true,
     "nodetype": "lab",
     "arguments": ["--vm-bytes", "60M", "--vm", "1"]
 }
