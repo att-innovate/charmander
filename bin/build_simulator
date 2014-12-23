@@ -6,7 +6,9 @@ SCRIPT_HOME="$( cd "$( dirname "$0" )" && pwd )"
 
 cd $SCRIPT_HOME/..
 
-vagrant ssh -c "sudo /vagrant/bin/invm/build_simulator.sh" slave2
-vagrant ssh -c "sudo /vagrant/bin/invm/build_simulator.sh" slave3
+for LAB_NODE in $(cat node_lab.txt)
+do
+    vagrant ssh -c "sudo /vagrant/bin/invm/build_simulator.sh" $LAB_NODE
+done
 
 cd - > /dev/null
