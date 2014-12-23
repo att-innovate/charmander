@@ -4,5 +4,5 @@ if [ -z "$1" ]
 then
     echo "No task-identifier supplied"
 else
-    curl -v -X DELETE 172.31.1.11:7075/client/task/$1
+    curl -X DELETE 172.31.1.11:7075/client/task/$1
 fi
