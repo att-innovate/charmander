@@ -8,7 +8,7 @@ cd $SCRIPT_HOME/..
 
 for ANALYTICS_NODE in $(cat ./node_analytics.txt)
 do
-    vagrant ssh -c "sudo /vagrant/bin/invm/build_analytics_maxusageresolver.sh" $ANALYTICS_NODE
+    vagrant ssh -c "sudo /vagrant/bin/invm/build_maxusage.sh" $ANALYTICS_NODE
 done
 
 cd - > /dev/null

@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 
-// ../spark/bin/spark-submit --class "SimpleApp --master local[*]  target/scala-2.10/simple-project_2.10-1.0.jar
+// ../spark/bin/spark-submit --class "MaxUsage" --master local[*]  target/scala-2.10/max-usage_2.10-1.0.jar
 
 import scala.collection.mutable
 import org.apache.spark.{SparkConf, SparkContext}
@@ -35,7 +35,7 @@ class ScalaCustomException(msg: String) extends RuntimeException(msg)
 
 case class MemoryUsage(timestamp: BigDecimal, memory: BigDecimal)
 
-object SimpleApp {
+object MaxUsage {
 
   val REDIS_HOST = "172.31.2.11"
   val REDIS_PORT = 31600

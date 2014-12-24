@@ -3,7 +3,7 @@ FROM progrium/busybox
 RUN opkg-install curl ca-certificates bash libstdcpp zlib
 
 ENV JAVA_HOME /usr/jdk1.8.0_25
-ENV SPARK_BINARY_RELEASE 1.1.0-bin-cdh4
+ENV SPARK_BINARY_RELEASE 1.2.0-bin-cdh4
 
 RUN curl \
   --silent \
@@ -28,6 +28,7 @@ RUN curl \
     | gunzip \
     | tar x -C /usr/ \
   && ln -s /usr/spark-$SPARK_BINARY_RELEASE /usr/spark
+
 
 ENV SPARK_HOME /usr/spark-$SPARK_BINARY_RELEASE
 ENV PATH $PATH:$SPARK_HOME/bin:/usr/python/bin/

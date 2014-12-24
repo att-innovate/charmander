@@ -1,6 +1,6 @@
 {
-    "id":          "maxusageresolver",
-    "dockerimage": "maxusageresolver",
+    "id":          "maxusage",
+    "dockerimage": "maxusage",
     "mem":         "400",
     "cpus":        "0.5",
     "nodetype":    "analytics",

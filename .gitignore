@@ -1,6 +1,21 @@
+# dev environment files
 .DS_Store
 .vagrant
 .idea
-crand
+project
+target
+
+# generated node-list files
+node_analytics.txt
+node_lab.txt
+node_slaves.txt
+
+# binaries
+containerresolver
+cpufixed
+cpurandom
+charmander-heapster
+
+
 
 
