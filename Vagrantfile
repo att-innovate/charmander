@@ -62,6 +62,7 @@ Vagrant.configure("2") do |config|
 
       pkg_once_cmd << 'docker pull phusion/baseimage:0.9.9; '
       pkg_once_cmd << 'docker pull busybox:ubuntu-14.04; '
+      pkg_once_cmd << 'docker pull progrium/busybox; '
       pkg_once_cmd << 'docker pull google/cadvisor:0.6.2; '
 
       # at bootup always remove old containers

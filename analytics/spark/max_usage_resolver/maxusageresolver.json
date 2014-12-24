@@ -1,0 +1,9 @@
+{
+    "id":          "maxusageresolver",
+    "dockerimage": "maxusageresolver",
+    "mem":         "400",
+    "cpus":        "0.5",
+    "nodetype":    "analytics",
+    "notmetered":  true
+
+}

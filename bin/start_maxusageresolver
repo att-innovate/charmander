@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl -s -X POST -T analytics/spark/max_usage_resolver/maxusageresolver.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task

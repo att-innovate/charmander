@@ -44,4 +44,13 @@ cd $HEAPSTER_DIR &&
 	docker build -t $image_name .
 
 
+SPARK_DIR=$ANALYTICS_DIR/spark
+cd $SPARK_DIR &&
+    image_name="spark" &&
+	echo "Building $image_name" &&
+	docker build -t $image_name .
+
+
+
+
 
