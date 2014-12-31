@@ -49,11 +49,12 @@ RUN git clone --recursive --depth 1 --single-branch https://github.com/ipython/i
 RUN cd ipython && pip3 install -e ".[notebook]"
 
 RUN mkdir /etc/service/ipython3notebook
-ADD ipython3notebook.sh /etc/service/ipython3notebook/run
+ADD files/ipython3notebook.sh /etc/service/ipython3notebook/run
 
 RUN ipython3 profile create
 
 RUN mkdir /notebooks
+ADD notebooks/* /notebooks/
 EXPOSE 8888
 
 
@@ -69,10 +70,10 @@ RUN git clone --recursive --depth 1 --single-branch https://github.com/ibm-et/sp
     && make install
 
 RUN mkdir -p $HOME/.ipython/kernels/spark
-ADD kernel.json $HOME/.ipython/kernels/spark/
+ADD files/kernel.json $HOME/.ipython/kernels/spark/
 
 RUN mkdir -p $HOME/.ipython/profile_default/static/custom/
-ADD custom.js $HOME/.ipython/profile_default/static/custom/
+ADD files/custom.js $HOME/.ipython/profile_default/static/custom/
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
