@@ -5,7 +5,7 @@ ENV MAXUSAGE_DIR /maxusage
 RUN mkdir -p $MAXUSAGE_DIR/src
 
 ADD src/ $MAXUSAGE_DIR/src
-ADD maxusage.sbt $MAXUSAGE_DIR/
+ADD build.sbt $MAXUSAGE_DIR/
 
 RUN cd $MAXUSAGE_DIR && sbt package
 
