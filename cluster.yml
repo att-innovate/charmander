@@ -13,7 +13,7 @@ analytics_node : "slave1"
 ##########################################
 master_mem     : 384
 master_cpus    : 1
-analytics_mem  : 1536
+analytics_mem  : 2048
 analytics_cpus : 2
 slave_mem      : 1024
 slave_cpus     : 2
