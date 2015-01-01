@@ -68,7 +68,7 @@ Vagrant.configure("2") do |config|
       pkg_always_cmd << 'docker ps -a | grep \'Exit\' | awk \'{print $1}\' | xargs -r docker rm; '
 
       # Install go
-      pkg_once_cmd << "wget https://storage.googleapis.com/golang/go#{GO_PACKAGE_VERSION}.linux-amd64.tar.gz; "
+      pkg_once_cmd << "wget --progress=bar:force https://storage.googleapis.com/golang/go#{GO_PACKAGE_VERSION}.linux-amd64.tar.gz; "
       pkg_once_cmd << "tar -C /usr/local -xzf go#{GO_PACKAGE_VERSION}.linux-amd64.tar.gz; "
 
       # Update hosts file
