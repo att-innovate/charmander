@@ -60,9 +60,8 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << "sed -i 's,GRUB_CMDLINE_LINUX=\"\",GRUB_CMDLINE_LINUX=\"cgroup_enable=memory swapaccount=1\",' /etc/default/grub; "
       pkg_once_cmd << 'update-grub; '
 
-      pkg_once_cmd << 'docker pull phusion/baseimage:0.9.9; '
+      pkg_once_cmd << 'docker pull phusion/baseimage:0.9.14; '
       pkg_once_cmd << 'docker pull busybox:ubuntu-14.04; '
-      pkg_once_cmd << 'docker pull progrium/busybox; '
       pkg_once_cmd << 'docker pull google/cadvisor:0.6.2; '
 
       # at bootup always remove old containers

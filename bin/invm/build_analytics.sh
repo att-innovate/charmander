@@ -16,6 +16,13 @@ mkdir -p $ANALYTICS_LOG_DIR/influxdb
 chown -R 777 $ANALYTICS_LOG_DIR
 
 
+ANALYTICSBASE_DIR=$ANALYTICS_DIR/analyticsbase
+cd $ANALYTICSBASE_DIR &&
+    image_name="analyticsbase" &&
+	echo "Building $image_name" &&
+	docker build -t $image_name .
+
+
 REDIS_DIR=$ANALYTICS_DIR/redis
 cd $REDIS_DIR &&
     image_name="redis" &&
@@ -43,12 +50,6 @@ cd $HEAPSTER_DIR &&
 	echo "Building $image_name" &&
 	docker build -t $image_name .
 
-
-SPARK_DIR=$ANALYTICS_DIR/spark
-cd $SPARK_DIR &&
-    image_name="spark" &&
-	echo "Building $image_name" &&
-	docker build -t $image_name .
 
 
 
