@@ -58,17 +58,16 @@ object MaxUsage {
         println(newestMaxRaw)
         val newestMax = BigDecimal(newestMaxRaw(0).toString)
 
-        val redisKey = "charmander:task-intelligence:" + rdd.name + ":mem"
-        val maxMemUse = CharmanderUtils.getFromRedis("SPARK_MAX")
+        val maxMemUse = CharmanderUtils.getTaskIntelligence(rdd.name, "mem")
 
         if (maxMemUse != "") {
           //task exists in redis
           if (BigDecimal(maxMemUse) < newestMax) {
-            CharmanderUtils.setToRedis(redisKey, newestMax.toString)
+            CharmanderUtils.setTaskIntelligence(rdd.name, "mem", newestMax.toString)
           }
         } else {
           //task does not exist in redis
-          CharmanderUtils.setToRedis(redisKey, newestMax.toString)
+          CharmanderUtils.setTaskIntelligence(rdd.name, "mem", newestMax.toString)
         }
       }
     })
@@ -79,7 +78,7 @@ object MaxUsage {
       val taskNamesMetered = CharmanderUtils.getMeteredTaskNamesFromRedis()
 
       for {taskNameMetered <- taskNamesMetered} {
-        val rawData = CharmanderUtils.sendQueryStringToOpenInfluxDB("select memory_usage from stats where container_name =~ /" + taskNameMetered + "*/ limit 100")
+        val rawData = CharmanderUtils.sendQueryStringToInfluxDB("select memory_usage from stats where container_name =~ /" + taskNameMetered + "*/ limit 100")
         if (rawData.length > 0) {
           val json = JsonMethods.parse(rawData)
           val points = json \\ "points"
