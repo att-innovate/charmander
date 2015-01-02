@@ -30,10 +30,10 @@ import org.apache.spark.streaming._
 import org.json4s.jackson.JsonMethods
 import org.att.charmander.CharmanderUtils
 
+
 case class MemoryUsage(timestamp: BigDecimal, memory: BigDecimal)
 
 object MaxUsage {
-
 
   def main(args: Array[String]) {
 
@@ -56,13 +56,13 @@ object MaxUsage {
         memoryusage.registerTempTable("memoryusage")
         val newestMaxRaw = sqlContext.sql("select max(memory) from memoryusage").first()
         println(newestMaxRaw)
+
         val newestMax = BigDecimal(newestMaxRaw(0).toString)
+        val previousMax = CharmanderUtils.getTaskIntelligence(rdd.name, "mem")
 
-        val maxMemUse = CharmanderUtils.getTaskIntelligence(rdd.name, "mem")
-
-        if (maxMemUse != "") {
+        if (previousMax != "") {
           //task exists in redis
-          if (BigDecimal(maxMemUse) < newestMax) {
+          if (BigDecimal(previousMax) < newestMax) {
             CharmanderUtils.setTaskIntelligence(rdd.name, "mem", newestMax.toString)
           }
         } else {
