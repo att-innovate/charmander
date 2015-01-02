@@ -28,80 +28,11 @@ import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming._
 import org.json4s.jackson.JsonMethods
-import java.io._
-import java.net._
-
-class ScalaCustomException(msg: String) extends RuntimeException(msg)
 
 case class MemoryUsage(timestamp: BigDecimal, memory: BigDecimal)
 
 object MaxUsage {
 
-  val REDIS_HOST = "172.31.2.11"
-  val REDIS_PORT = 31600
-  val INFLUXDB_HOST = "172.31.2.11"
-  val INFLUXDB_PORT = 31410
-
-  def setToRedis(key: String, value: String): Unit = {
-    val socket = new Socket(REDIS_HOST, REDIS_PORT)
-    var out = new PrintWriter(socket.getOutputStream(), true)
-    var in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
-    out.println("*3\r\n$3\r\nSET\r\n$" + key.length.toString + "\r\n" + key + "\r\n$" + value.length.toString + "\r\n" + value + "\r\n")
-    if (in.readLine() != "+OK")
-      throw new ScalaCustomException("Could not set value in Redis.")
-  }
-
-  def getFromRedis(key: String): String = {
-    val socket = new Socket(REDIS_HOST, REDIS_PORT)
-    var out = new PrintWriter(socket.getOutputStream(), true)
-    var in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
-    out.println("*2\r\n$3\r\nGET\r\n$" + key.length.toString + "\r\n" + key + "\r\n")
-    if (in.readLine().charAt(1) == '-') //Redis responses with $-1 if no value found
-      return ""
-    else
-      return in.readLine()
-  }
-
-  def getMeteredTaskNamesFromRedis(): List[String] = try {
-      var tasks = mutable.Set[String]()
-      val socket = new Socket(REDIS_HOST, REDIS_PORT)
-      var out = new PrintWriter(socket.getOutputStream(), true)
-      var in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
-      out.println("*2\r\n$4\r\nKEYS\r\n$26\r\ncharmander:tasks-metered:*\r\n")
-      val numberOfResultsRaw: String = in.readLine()
-      if ( numberOfResultsRaw == "*0") {
-        return tasks.toList
-      }
-
-      val numberOfResults = (numberOfResultsRaw.substring(1)).toInt
-      for (i <- 1 to numberOfResults) {
-        in.readLine() // we don't care abput the length
-        val taskNameRaw = in.readLine()
-        val taskName = taskNameRaw slice ((taskNameRaw lastIndexOf(':'))+1, taskNameRaw lastIndexOf('-'))
-        tasks += taskName
-      }
-
-      return tasks.toList
-  } catch {
-    case e: java.net.ConnectException => return List[String]()
-  }
-
-  def sendQueryStringToOpenInfluxDB(query: String): String = try {
-    val in = scala.io.Source.fromURL("http://"
-      + INFLUXDB_HOST
-      + ":"
-      + INFLUXDB_PORT
-      + "/db/charmander/series?u=root&p=root&q="
-      + java.net.URLEncoder.encode(query),
-      "utf-8")
-    var data = ""
-    for (line <- in.getLines)
-      data = line
-    return data
-  } catch {
-    case e: IOException => return ""
-    case e: java.net.ConnectException => return ""
-  }
 
   def main(args: Array[String]) {
 
@@ -127,16 +58,16 @@ object MaxUsage {
         val newestMax = BigDecimal(newestMaxRaw(0).toString)
 
         val redisKey = "charmander:task-intelligence:" + rdd.name + ":mem"
-        val maxMemUse = getFromRedis("SPARK_MAX")
+        val maxMemUse = CharmanderUtils.getFromRedis("SPARK_MAX")
 
         if (maxMemUse != "") {
           //task exists in redis
           if (BigDecimal(maxMemUse) < newestMax) {
-            setToRedis(redisKey, newestMax.toString)
+            CharmanderUtils.setToRedis(redisKey, newestMax.toString)
           }
         } else {
           //task does not exist in redis
-          setToRedis(redisKey, newestMax.toString)
+          CharmanderUtils.setToRedis(redisKey, newestMax.toString)
         }
       }
     })
@@ -144,10 +75,10 @@ object MaxUsage {
 
 
     while (true) {
-      val taskNamesMetered = getMeteredTaskNamesFromRedis()
+      val taskNamesMetered = CharmanderUtils.getMeteredTaskNamesFromRedis()
 
       for {taskNameMetered <- taskNamesMetered} {
-        val rawData = sendQueryStringToOpenInfluxDB("select memory_usage from stats where container_name =~ /" + taskNameMetered + "*/ limit 100")
+        val rawData = CharmanderUtils.sendQueryStringToOpenInfluxDB("select memory_usage from stats where container_name =~ /" + taskNameMetered + "*/ limit 100")
         if (rawData.length > 0) {
           val json = JsonMethods.parse(rawData)
           val points = json \\ "points"
