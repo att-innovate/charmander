@@ -21,13 +21,14 @@
 // THE SOFTWARE.
 
 
-// ../spark/bin/spark-submit --class "MaxUsage" --master local[*]  target/scala-2.10/max-usage_2.10-1.0.jar
+// ../spark/bin/spark-submit --class "MaxUsage" --master local[*]  target/scala-2.10/max-usage_2.10-1.0.jar --jars lib/charmander-utils_2.10-1.0.jar target/scala-2.10/max-usage_2.10-1.0.jar
 
 import scala.collection.mutable
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming._
 import org.json4s.jackson.JsonMethods
+import org.att.charmander.CharmanderUtils
 
 case class MemoryUsage(timestamp: BigDecimal, memory: BigDecimal)
 

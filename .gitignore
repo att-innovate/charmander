@@ -16,6 +16,8 @@ cpufixed
 cpurandom
 charmander-heapster
 
+# charmander utils lib
+charmander-utils_*
 
 
 
