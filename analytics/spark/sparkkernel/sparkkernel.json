@@ -1,7 +1,7 @@
 {
     "id":          "sparkkernel",
     "dockerimage": "sparkkernel",
-    "mem":         "500",
+    "mem":         "600",
     "nodetype":    "analytics",
     "notmetered":  true,
     "ports": [

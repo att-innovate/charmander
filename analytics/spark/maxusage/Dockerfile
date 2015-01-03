@@ -29,6 +29,7 @@ ENV MAXUSAGE_DIR /maxusage
 RUN mkdir -p $MAXUSAGE_DIR/src
 
 ADD src/ $MAXUSAGE_DIR/src
+ADD lib/ $MAXUSAGE_DIR/lib
 ADD build.sbt $MAXUSAGE_DIR/
 
 RUN cd $MAXUSAGE_DIR && sbt package
@@ -37,7 +38,7 @@ RUN cd $MAXUSAGE_DIR && sbt package
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENTRYPOINT cd $MAXUSAGE_DIR && spark-submit --class MaxUsage --master local[*] target/scala-2.10/max-usage_2.10-1.0.jar
+ENTRYPOINT cd $MAXUSAGE_DIR && spark-submit --class MaxUsage --master local[*] --jars lib/charmander-utils_2.10-1.0.jar target/scala-2.10/max-usage_2.10-1.0.jar
 
 
 

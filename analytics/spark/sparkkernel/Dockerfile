@@ -24,7 +24,7 @@ EXPOSE 8888
 # Install Spark-Kernel
 ENV SPARKKERNEL_COMMIT b2550136da17cc4a9c86b0411e82e72f27e58562
 
-RUN git clone --recursive --depth 1 --single-branch https://github.com/ibm-et/spark-kernel.git \
+RUN git clone --recursive --single-branch https://github.com/ibm-et/spark-kernel.git \
     && cd /spark-kernel \
     && git checkout $SPARKKERNEL_COMMIT \
     && sbt compile \
@@ -38,8 +38,10 @@ ADD files/kernel.json $HOME/.ipython/kernels/spark/
 RUN mkdir -p $HOME/.ipython/profile_default/static/custom/
 ADD files/custom.js $HOME/.ipython/profile_default/static/custom/
 
+ADD files/charmander-utils_2.10-1.0.jar /root/local/kernel/current/lib/
+
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
+# CMD ["/sbin/my_init"]
