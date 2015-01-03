@@ -26,6 +26,7 @@
 import scala.collection.mutable
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.rdd.RDD
+
 import org.apache.spark.streaming._
 import org.json4s.jackson.JsonMethods
 import org.att.charmander.CharmanderUtils
@@ -55,7 +56,7 @@ object MaxUsage {
         val memoryusage = rdd.map(p => MemoryUsage(BigDecimal(p(0).asInstanceOf[BigInt]), BigDecimal(p(2).asInstanceOf[BigInt])))
         memoryusage.registerTempTable("memoryusage")
         val newestMaxRaw = sqlContext.sql("select max(memory) from memoryusage").first()
-        println(newestMaxRaw)
+        println("%s %s".format(rdd.name, newestMaxRaw(0)))
 
         val newestMax = BigDecimal(newestMaxRaw(0).toString)
         val previousMax = CharmanderUtils.getTaskIntelligence(rdd.name, "mem")
@@ -78,19 +79,7 @@ object MaxUsage {
       val taskNamesMetered = CharmanderUtils.getMeteredTaskNamesFromRedis()
 
       for {taskNameMetered <- taskNamesMetered} {
-        val rawData = CharmanderUtils.sendQueryStringToInfluxDB("select memory_usage from stats where container_name =~ /" + taskNameMetered + "*/ limit 100")
-        if (rawData.length > 0) {
-          val json = JsonMethods.parse(rawData)
-          val points = json \\ "points"
-          val mypoints = points.values
-
-          if (points.values.isInstanceOf[List[Any]]) {
-            val rdd = sc.parallelize(mypoints.asInstanceOf[List[List[BigDecimal]]])
-            rdd.setName(taskNameMetered)
-            rddQueue += rdd
-            println(taskNameMetered)
-          }
-        }
+        rddQueue += CharmanderUtils.getRDDForTask(sc, taskNameMetered, "memory_usage", 100)
       }
 
       Thread.sleep(15000)
