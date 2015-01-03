@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 
-// ../spark/bin/spark-submit --class "MaxUsage" --master local[*]  target/scala-2.10/max-usage_2.10-1.0.jar --jars lib/charmander-utils_2.10-1.0.jar target/scala-2.10/max-usage_2.10-1.0.jar
+// ../spark/bin/spark-submit --class "MaxUsage" --master local[*]  --jars lib/charmander-utils_2.10-1.0.jar target/scala-2.10/max-usage_2.10-1.0.jar
 
 import scala.collection.mutable
 import org.apache.spark.{SparkConf, SparkContext}
