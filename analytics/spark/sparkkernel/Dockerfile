@@ -22,7 +22,7 @@ EXPOSE 8888
 
 
 # Install Spark-Kernel
-ENV SPARKKERNEL_COMMIT b2550136da17cc4a9c86b0411e82e72f27e58562
+ENV SPARKKERNEL_COMMIT 240e823970484b5e654b179e616f5bd5eeb33eb3
 
 RUN git clone --recursive --single-branch https://github.com/ibm-et/spark-kernel.git \
     && cd /spark-kernel \
@@ -44,4 +44,4 @@ ADD files/charmander-utils_2.10-1.0.jar /root/local/kernel/current/lib/
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Use baseimage-docker's init system.
-# CMD ["/sbin/my_init"]
+CMD ["/sbin/my_init"]
