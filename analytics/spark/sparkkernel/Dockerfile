@@ -4,7 +4,7 @@ MAINTAINER Charmander
 # Install IPython3
 RUN apt-get -y install python3-pip libzmq-dev
 
-ENV IPYTHON_COMMIT 4e49a837589c49d1576136cdbc65fe2efba1eb7c
+ENV IPYTHON_COMMIT 12277c751bd676d7a14770f3c8f7a5999d263f8e
 
 RUN git clone --recursive --single-branch https://github.com/ipython/ipython.git \
     && cd ipython \
