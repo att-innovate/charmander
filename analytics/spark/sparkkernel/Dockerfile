@@ -16,8 +16,6 @@ ADD files/ipython3notebook.sh /etc/service/ipython3notebook/run
 
 RUN ipython3 profile create
 
-RUN mkdir /notebooks
-ADD notebooks/* /notebooks/
 EXPOSE 8888
 
 
@@ -39,6 +37,12 @@ RUN mkdir -p $HOME/.ipython/profile_default/static/custom/
 ADD files/custom.js $HOME/.ipython/profile_default/static/custom/
 
 ADD files/charmander-utils_2.10-1.0.jar /root/local/kernel/current/lib/
+
+
+# Install example notebooks
+RUN mkdir /notebooks
+ADD notebooks/* /notebooks/
+
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
