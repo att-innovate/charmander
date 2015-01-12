@@ -20,7 +20,7 @@ EXPOSE 8888
 
 
 # Install Spark-Kernel
-ENV SPARKKERNEL_COMMIT 240e823970484b5e654b179e616f5bd5eeb33eb3
+ENV SPARKKERNEL_COMMIT 3f4c22a562c73a4c9e299d9c189e716725ea3ed9
 
 RUN git clone --recursive --single-branch https://github.com/ibm-et/spark-kernel.git \
     && cd /spark-kernel \
@@ -42,7 +42,6 @@ ADD files/charmander-utils_2.10-1.0.jar /root/local/kernel/current/lib/
 # Install example notebooks
 RUN mkdir /notebooks
 ADD notebooks/* /notebooks/
-
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
