@@ -3,6 +3,7 @@
     "dockerimage": "influxdb",
     "mem":         "100",
     "cpus":        "1",
+    "sla":         "singleton",
     "nodetype":    "analytics",
     "notmetered":  true,
     "volumes": [

@@ -2,6 +2,7 @@
     "id":          "redis",
     "dockerimage": "redis",
     "mem":         "50",
+    "sla":         "singleton",
     "nodetype":    "analytics",
     "notmetered":  true,
     "ports": [
