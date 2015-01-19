@@ -1,4 +1,4 @@
-Charmander - Scheduler Lab
+Charmander Scheduler Lab
 ==========================
 
 Charmander is a lab environment for measuring and analyzing resource-scheduling algorithms.
@@ -16,7 +16,7 @@ those results can be **fed back** in to the scheduler.
 
 ###Setup and Run Charmander###
 
-All that is required to run a simple lab setup and experiment is _Vagrant_, _VirtualBox_, _curl_ and a bit of spare time.
+All that is required to run a simple lab setup and an experiment is _Vagrant_, _VirtualBox_, _curl_ and a bit of spare time.
 All the steps are automated and are part of simple scripts that already come with the Charmander project.
 
 1. [Setup Nodes][5]
@@ -62,7 +62,7 @@ All the steps are automated and are part of simple scripts that already come wit
 
 
 
-###The different Charmander projects###
+###The different Charmander projects on GitHub###
 
 
 1. [github.com/att-innovate/charmander][1]
@@ -86,8 +86,14 @@ All the steps are automated and are part of simple scripts that already come wit
 
 
 
+###Thanks!###
+
+
+###How to Contribute###
+
 [1]: https://github.com/att-innovate/charmander
 [2]: https://github.com/att-innovate/charmander-scheduler
 [3]: https://github.com/att-innovate/charmander-heapster
 [4]: https://github.com/att-innovate/charmander-spark
 [5]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPNODES.md
+[6]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSCHEDULER.md
