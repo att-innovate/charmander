@@ -16,7 +16,12 @@ Clone, compile and start up Scheduler. The compilation of the code happens behin
 ./bin/deploy_scheduler
 ```
 
-Verify that is shows up under Frameworks in the Mesos Management Console: [http://172.31.1.11:5050](http://172.31.1.11:5050)
+Verify that Charmander shows up under Frameworks in the Mesos Management Console: [http://172.31.1.11:5050](http://172.31.1.11:5050)
+
+
+### Next build and deploy Load-Simulators
+
+[Load-Simulators](https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATOR.md)
 
 
 ### Reset Scheduler

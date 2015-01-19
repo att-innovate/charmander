@@ -38,7 +38,7 @@ All the steps are automated and are part of simple scripts that already come wit
 
     - Build all the Docker images for the full analytics stack on the analytics node
 
-5. [Build and run a simple Experiment, _maxusage_][5]
+5. [Build and run a simple Experiment, _maxusage_][9]
 
     - Build and run a simple experiment that changes the resource allocation based on insights from previous runs
 
@@ -99,3 +99,4 @@ All the steps are automated and are part of simple scripts that already come wit
 [6]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSCHEDULER.md
 [7]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATORS.md
 [8]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPANALYTICS.md
+[9]: https://github.com/att-innovate/charmander/blob/master/docs/RUNEXPERIMENT.md
