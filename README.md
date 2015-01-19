@@ -39,21 +39,31 @@ The different Charmander projects
 Setup and Run Charmander
 ------------------------
 
-All that is required to run a simple lab setup is _Vagrant_ and _VirtualBox_.
-If you want to modify the Scheduler a local install of _golang_ is needed and for more advanced Spark analytics we suggest
-that you have a local install of Spark including sbt and Java. Additional information can be found via the following links.
+All that is required to run a simple lab setup and experiment is _Vagrant_, _VirtualBox_, _curl_ and a bit of spare time.
 
 1. [Setup Nodes][5]
 
-    Steps to configure and build the different nodes with Vagrant and VirtualBox
+    - Configure and build the different nodes with Vagrant and VirtualBox
+    - Reload and reset environment
 
-2. [Build and deploy Scheduler][6]
+2. [Build and deploy Scheduler][5]
 
-    Clones the Charmander Scheduler projects, builts i
-3. Build and deploy Analytics Stack
-4. Build and deploy Load-Simulators
-5. Spark Analytics
-6. Modify Scheduler
+    - Clone the Charmander Scheduler projects
+    - Compile it inside the master node
+    - Deploy and run it
+
+3. [Build and deploy Load-Simulators][5]
+
+4. [Build and deploy Analytics Stack][5]
+    -
+
+5. [Build and run a simple Experiment, _maxusage_][5]
+
+For more advanced topics like modification to the scheduler or changes to the analytics piece documents can be found at:
+
+6. [Spark Analytics][5]
+7. [Scheduler API][5]
+8. [Modify Scheduler][5]
 
 
 [1]: https://github.com/att-innovate/charmander
