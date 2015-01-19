@@ -54,7 +54,6 @@ All that is required to run a simple lab setup and experiment is _Vagrant_, _Vir
 3. [Build and deploy Load-Simulators][5]
 
 4. [Build and deploy Analytics Stack][5]
-    -
 
 5. [Build and run a simple Experiment, _maxusage_][5]
 
