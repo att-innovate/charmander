@@ -7,9 +7,8 @@ Setup Nodes
 
 Tested on OSX Yosemite.
 
-[VirtualBox](https://www.virtualbox.org), version >= 4.3.20
-
-[Vagrant](http://www.vagrantup.com/downloads.html), version >= 1.7.1
+- [VirtualBox](https://www.virtualbox.org), version >= 4.3.20
+- [Vagrant](http://www.vagrantup.com/downloads.html), version >= 1.7.1
 
 Verify vagrant version:
 
@@ -46,6 +45,10 @@ vagrant reload
 
 Mesos Management console should now be available at: [http://172.31.1.11:5050](http://172.31.1.11:5050)
 
+
+### Next deploy Charmander-Scheduler
+
+[Deploy Scheduler](https://github.com/att-innovate/charmander/blob/master/docs/SETUPSCHEDULER.md)
 
 ### Reboot of the Charmander environment
 

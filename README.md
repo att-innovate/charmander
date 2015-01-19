@@ -24,17 +24,17 @@ All the steps are automated and are part of simple scripts that already come wit
     - Configure and build the different nodes with Vagrant and VirtualBox
     - Reload and reset environment
 
-2. [Build and deploy Scheduler][5]
+2. [Build and deploy Scheduler][6]
 
     - Clone the Charmander Scheduler projects
     - Compile it inside the master node
     - Deploy and run it
 
-3. [Build and deploy Load-Simulators][5]
+3. [Build and deploy Load-Simulators][7]
 
     - Build the Docker images for the different load-simulators on all the lab nodes
 
-4. [Build and deploy Analytics Stack][5]
+4. [Build and deploy Analytics Stack][8]
 
     - Build all the Docker images for the full analytics stack on the analytics node
 
@@ -97,3 +97,5 @@ All the steps are automated and are part of simple scripts that already come wit
 [4]: https://github.com/att-innovate/charmander-spark
 [5]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPNODES.md
 [6]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSCHEDULER.md
+[7]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATORS.md
+[8]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPANALYTICS.md

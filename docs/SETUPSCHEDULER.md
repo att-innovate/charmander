@@ -1,12 +1,12 @@
 Setup Scheduler
 ---------------
 
-The Charmander-Scheduler is our lab specific Mesos-Framework. As a typical Mesos-Framework it handles the allocation of
+The Charmander-Scheduler is our own lab-specific Mesos-Framework. As a typical Mesos-Framework it handles the allocation of
 the tasks to the individual nodes based on offers it receives from Mesos.
 
 The Scheduler is written in Go and its source code can be found in: [charmander-scheduler project](https://github.com/att-innovate/charmander-scheduler)
 
-More information about the Scheduler API can be found at: [Scheduler API](https://github.com/att-innovate/charmander/blob/master/docs/SCHEDULERAPI.md)
+More information about the Scheduler API at: [Scheduler API](https://github.com/att-innovate/charmander/blob/master/docs/SCHEDULERAPI.md)
 
 ### Deploy Scheduler
 
