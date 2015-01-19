@@ -39,6 +39,7 @@ those results can be **fed back** in to the scheduler.
 ###Setup and Run Charmander###
 
 All that is required to run a simple lab setup and experiment is _Vagrant_, _VirtualBox_, _curl_ and a bit of spare time.
+All the steps are automated and are part of simple scripts that already come with the Charmander project.
 
 1. [Setup Nodes][5]
 
@@ -53,15 +54,33 @@ All that is required to run a simple lab setup and experiment is _Vagrant_, _Vir
 
 3. [Build and deploy Load-Simulators][5]
 
+    - Build the Docker images for the different load-simulators on all the lab nodes
+
 4. [Build and deploy Analytics Stack][5]
+
+    - Build all the Docker images for the full analytics stack on the analytics node
 
 5. [Build and run a simple Experiment, _maxusage_][5]
 
-For more advanced topics like modification to the scheduler or changes to the analytics piece documents can be found at:
+    - Build and run a simple experiment that changes the resource allocation based on insights from previous runs
 
 6. [Spark Analytics][5]
+
+    - How to run and use Spark in context of Charmander
+    - How to build and use iPython and [Spark-Kernel][5], _experimental_!
+
 7. [Scheduler API][5]
+
+    - List of all the different Scheduler REST APIs
+
 8. [Modify Scheduler][5]
+
+    - How to change and modify the Charmander Scheduler
+    - Run the Scheduler locally
+
+9. [Script Reference][5]
+
+    - List of all the include scripts/tools
 
 
 [1]: https://github.com/att-innovate/charmander
