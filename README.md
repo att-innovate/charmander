@@ -13,28 +13,6 @@ The collected measurements can afterwards be **analyzed** using the included Spa
 those results can be **fed back** in to the scheduler.
 
 
-###The different Charmander projects###
-
-
-1. [github.com/att-innovate/charmander][1]
-
-    This project contains all the scripts, glue ..
-
-
-2. [github.com/att-innovate/charmander-scheduler][2]
-
-    Charmander Scheduler is a Framework for Mesos.
-
-
-3. [github.com/att-innovate/charmander-heapster][3]
-
-    A slimmed-down version of Google's Heapster project.
-
-
-4. [github.com/att-innovate/charmander-spark][4]
-
-    This project contains Charmander-specific helper functions for Spark.
-
 
 ###Setup and Run Charmander###
 
@@ -81,6 +59,31 @@ All the steps are automated and are part of simple scripts that already come wit
 9. [Script Reference][5]
 
     - List of all the include scripts/tools
+
+
+
+###The different Charmander projects###
+
+
+1. [github.com/att-innovate/charmander][1]
+
+    This project contains all the scripts, glue ..
+
+
+2. [github.com/att-innovate/charmander-scheduler][2]
+
+    Charmander Scheduler is a Framework for Mesos.
+
+
+3. [github.com/att-innovate/charmander-heapster][3]
+
+    A slimmed-down version of Google's Heapster project.
+
+
+4. [github.com/att-innovate/charmander-spark][4]
+
+    This project contains Charmander-specific helper functions for Spark.
+
 
 
 [1]: https://github.com/att-innovate/charmander
