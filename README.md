@@ -13,8 +13,8 @@ The collected measurements can afterwards be **analyzed** using the included Spa
 those results can be **fed back** in to the scheduler.
 
 
-The different Charmander projects
----------------------------------
+###The different Charmander projects###
+
 
 1. [github.com/att-innovate/charmander][1]
 
@@ -36,8 +36,7 @@ The different Charmander projects
     This project contains Charmander-specific helper functions for Spark.
 
 
-Setup and Run Charmander
-------------------------
+###Setup and Run Charmander###
 
 All that is required to run a simple lab setup and experiment is _Vagrant_, _VirtualBox_, _curl_ and a bit of spare time.
 
