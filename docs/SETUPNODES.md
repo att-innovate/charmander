@@ -1,6 +1,8 @@
 Setup Nodes
 -----------
 
+![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/Nodes.png?raw=true)
+
 ### Prerequisites
 
 #### Virtual Environment
