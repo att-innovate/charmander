@@ -2,7 +2,7 @@ Charmander Scheduler Lab
 ==========================
 
 Charmander is a lab environment for measuring and analyzing resource-scheduling algorithms.
-The project got started at the Foundry as an internship project in 2014 by Thedora Chu.
+The project got started by Theodora Chu in 2014 as an internship project.
 
 ![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/CharmanderSchedulerLab.png?raw=true)
 
@@ -17,7 +17,7 @@ those results can be **fed back** in to the scheduler.
 ###Setup and Run Charmander
 
 All that is required to run a simple lab setup and an experiment is _Vagrant_, _VirtualBox_, _curl_ and a bit of spare time.
-All the steps are automated and are part of simple scripts that already come with the Charmander project.
+All the steps are automated and are part of simple scripts that come with the Charmander project.
 
 1. [Setup Nodes][5]
 
@@ -47,16 +47,16 @@ All the steps are automated and are part of simple scripts that already come wit
     - How to run and use Spark with Charmander
     - How to build and use iPython and [Spark-Kernel][11], _experimental_!
 
-7. [Scheduler API][5]
+7. [Scheduler API][12]
 
     - List of all the different Scheduler REST APIs
 
-8. [Modify Scheduler][5]
+8. [Modify Scheduler][13]
 
     - How to change and modify the Charmander Scheduler
     - Run the Scheduler locally
 
-9. [Script Reference][5]
+9. [Script Reference][14]
 
     - List of all the include scripts/tools
 
@@ -86,10 +86,16 @@ All the steps are automated and are part of simple scripts that already come wit
 
 
 
+###How to Contribute
+
+
 ###Thanks!
 
+Some of the Open Source projects that inspired us:
+- [VoltFramework][15]
+- [Mesos-Go][16]
+- [A Docker Dev Environment in 24 Hours!][17]
 
-###How to Contribute
 
 [1]: https://github.com/att-innovate/charmander
 [2]: https://github.com/att-innovate/charmander-scheduler
@@ -102,3 +108,7 @@ All the steps are automated and are part of simple scripts that already come wit
 [9]: https://github.com/att-innovate/charmander/blob/master/docs/RUNEXPERIMENT.md
 [9]: https://github.com/att-innovate/charmander/blob/master/docs/SPARKANALYTICS.md
 [11]: https://github.com/ibm-et/spark-kernel
+[15]: https://github.com/VoltFramework/volt
+[16]: https://github.com/mesos/mesos-go
+[17]: http://blog.relateiq.com/a-docker-dev-environment-in-24-hours-part-2-of-2/
+
