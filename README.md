@@ -14,7 +14,7 @@ those results can be **fed back** in to the scheduler.
 
 
 
-###Setup and Run Charmander
+#### Setup and Run Charmander
 
 All that is required to run a simple lab setup and an experiment is _Vagrant_, _VirtualBox_, _curl_ and a bit of spare time.
 All the steps are automated and are part of simple scripts that come with the Charmander project.
@@ -62,7 +62,7 @@ All the steps are automated and are part of simple scripts that come with the Ch
 
 
 
-###The different Charmander projects on GitHub
+#### The different Charmander projects on GitHub
 
 
 1. [github.com/att-innovate/charmander][1]
@@ -86,10 +86,10 @@ All the steps are automated and are part of simple scripts that come with the Ch
 
 
 
-###How to Contribute
+#### How to Contribute
 
 
-###Thanks!
+#### Thanks!
 
 Some additional open source projects and a blog post that have inspired us:
 - [VoltFramework][15]
