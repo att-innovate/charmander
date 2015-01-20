@@ -1,8 +1,10 @@
 Charmander Scheduler Lab
-==========================
+------------------------
 
 Charmander is a lab environment for measuring and analyzing resource-scheduling algorithms.
-The project got started by Theodora Chu in 2014 as an internship project.
+
+The project got started in Summer 2014 by Theodora Chu as an internship project. The main motivation was a [paper][18] from
+Stanford University: "Quasar: Resource-Efficient and QoS-Aware Cluster Management".
 
 ![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/CharmanderSchedulerLab.png?raw=true)
 
@@ -12,7 +14,8 @@ and b) **measure** the corresponding cpu, memory, and network-loads.
 The collected measurements can afterwards be **analyzed** using the included Spark analytics workbench and subsequently
 those results can be **fed back** in to the scheduler.
 
-
+Obviously this lab-setup can be used for other use-cases like testing and analyzing machine-learning based anomaly-detection
+or profiling algorithms, or simply serving as the load-pattern verification authority in a continuous integration environment.
 
 #### Setup and Run Charmander
 
@@ -67,12 +70,12 @@ All the steps are automated and are part of simple scripts that come with the Ch
 
 1. [github.com/att-innovate/charmander][1]
 
-    The main project, this project, contains all the scripts to set up the lab.
+    The main project, this project, it contains all the scripts to set up the lab.
 
 
 2. [github.com/att-innovate/charmander-scheduler][2]
 
-    Charmander Scheduler is a Framework for Mesos.
+    Charmander Scheduler is our Framework for Mesos.
 
 
 3. [github.com/att-innovate/charmander-heapster][3]
@@ -111,4 +114,5 @@ Some additional open source projects and a blog post that have inspired us:
 [15]: https://github.com/VoltFramework/volt
 [16]: https://github.com/mesos/mesos-go
 [17]: http://blog.relateiq.com/a-docker-dev-environment-in-24-hours-part-2-of-2/
+[18]: http://web.stanford.edu/group/mast/cgi-bin/drupal/content/quasar-resource-efficient-and-qos-aware-cluster-management
 

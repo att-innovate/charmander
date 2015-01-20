@@ -1,5 +1,5 @@
-Setup Analytics-Stack
----------------------
+Run simple Experiment - maxusage
+--------------------------------
 
 #### Deploy Charmander-Scheduler
 
@@ -9,16 +9,14 @@ Install and start up Charmander-Scheduler, our "Mesos-Framework"
 ./bin/deploy_scheduler
 ```
 
-Verify that is shows up under Frameworks in the Mesos Management Console.
+Verify that it shows up under Frameworks in the Mesos Management Console.
 
 
-#### Deploy cAdvisor
+#### Start cAdvisor
 
 Deploys cAdvisor to all the slave nodes
 
-```
-./bin/start_cadvisor
-```
+    ./bin/start_cadvisor
 
 Mesos console can be used to check on cAdvisor status.
 
@@ -31,14 +29,11 @@ Slave2: [http://172.31.2.12:31500](http://172.31.2.12:31500)
 Slave3: [http://172.31.2.13:31500](http://172.31.2.13:31500)
 
 
-#### Build and start Analytics Stack
+#### Start Analytics Stack
 
 Deploy Analytics stack (InfluxDB, Redis, Heapster, Spark) on the slave1 as configured in `cluster.yml`
 
-```
-./bin/build_analytics
-./bin/start_analytics
-```
+    ./bin/start_analytics
 
 Redis and InfluxDB's WebUI will become available on slave1 at:
 
@@ -61,21 +56,4 @@ To reset the environment in to a fresh state:
 ./bin/start_analytics
 ```
 
-#### Reboot of the Charmander environment
-
-To reboot in to a fresh test-environment:
-
-```
-vagrant halt
-vagrant up
-./bin/reset_scheduler
-./bin/start_cadvisor
-./bin/start_analytics
-```
-
-#### Destroy test environment
-
-```
-vagrant destroy
-```
 
