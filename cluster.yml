@@ -18,7 +18,7 @@ analytics_cpus : 2
 slave_mem      : 1024
 slave_cpus     : 2
 
-# Private ip bases
+# Private ip bases, don't change
 ################################################
 master_ipbase  : "172.31.1."
 slave_ipbase   : "172.31.2."
