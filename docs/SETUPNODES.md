@@ -1,6 +1,8 @@
 Setup Nodes
 -----------
 
+#### Diagram of the Cluster
+
 ![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/Nodes.png?raw=true)
 
 #### Prerequisites
