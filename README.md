@@ -67,7 +67,7 @@ All the steps are automated and are part of simple scripts that come with the Ch
 
 1. [github.com/att-innovate/charmander][1]
 
-    This project contains all the scripts, glue ..
+    The main project, this project, contains all the scripts to set up the lab.
 
 
 2. [github.com/att-innovate/charmander-scheduler][2]

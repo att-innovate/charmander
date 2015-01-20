@@ -3,9 +3,9 @@ Setup Nodes
 
 ![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/Nodes.png?raw=true)
 
-### Prerequisites
+#### Prerequisites
 
-#### Virtual Environment
+**Virtual Environment**
 
 Tested on OSX Yosemite.
 
@@ -16,7 +16,7 @@ Verify vagrant version:
 
     vagrant version
 
-#### Additional Vagrant Plugins (optional)
+**Additional Vagrant Plugins (optional)**
 
 [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier), >= 1.1.0
 
@@ -28,7 +28,7 @@ Installation:
     vagrant plugin install vagrant-cachier
 
 
-### Default Configuration, 4 Node Cluster
+#### Default Configuration, 4 Node Cluster
 
 The script by default creates a 4 node cluster (master1, slave1 .. 3). Slave1 will host the analytics stack and slave2 and slave 3
 become lab nodes. The default configuration is defined in `cluster.yml`.
@@ -57,7 +57,7 @@ become lab nodes. The default configuration is defined in `cluster.yml`.
 Changes in that file require a **complete rebuild** of all the nodes.
 
 
-### Initial Bootstrap
+#### Initial Bootstrap
 
 Installs and configures the test environment. That process can take a while.
 
@@ -70,19 +70,19 @@ Installs and configures the test environment. That process can take a while.
 Mesos Management console should now be available at: [http://172.31.1.11:5050](http://172.31.1.11:5050)
 
 
-### Next deploy Charmander-Scheduler
+#### Next deploy Charmander-Scheduler
 
 [Deploy Scheduler](https://github.com/att-innovate/charmander/blob/master/docs/SETUPSCHEDULER.md)
 
 
-### Reboot of the Charmander environment
+#### Reboot of the Charmander environment
 
 To reboot in to a fresh test-environment:
 
     vagrant halt
     vagrant up
 
-### Destroy Charmander environment
+#### Destroy Charmander environment
 
     vagrant destroy
 
