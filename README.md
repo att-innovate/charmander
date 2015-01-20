@@ -3,13 +3,13 @@ Charmander Scheduler Lab
 
 Charmander is a lab environment for measuring and analyzing resource-scheduling algorithms.
 
-The project got started in Summer 2014 by Theodora Chu as an internship project. The main motivation was a [paper][18] from
+The project got started in Summer 2014 by Theodora Chu as an internship project. It was motivation by a [paper][18] from
 Stanford University: "Quasar: Resource-Efficient and QoS-Aware Cluster Management".
-
-![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/CharmanderSchedulerLab.png?raw=true)
 
 Charmander at its core provides an easy to use environment to a) **schedule** and **deploy** compute-tasks in a multi-node setup
 and b) **measure** the corresponding cpu, memory, and network-loads.
+
+![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/CharmanderSchedulerLab.png?raw=true)
 
 The collected measurements can afterwards be **analyzed** using the included Spark analytics workbench and subsequently
 those results can be **fed back** in to the scheduler.
