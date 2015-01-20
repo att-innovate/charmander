@@ -8,7 +8,7 @@ The Scheduler is written in Go and its source code can be found in: [charmander-
 
 More information about the Scheduler API at: [Scheduler API](https://github.com/att-innovate/charmander/blob/master/docs/SCHEDULERAPI.md)
 
-### Deploy Scheduler
+#### Deploy Scheduler
 
 Clone, compile and start up Scheduler. The compilation of the code happens behind the scene on the "master" node.
 
@@ -19,12 +19,12 @@ Clone, compile and start up Scheduler. The compilation of the code happens behin
 Verify that Charmander shows up under Frameworks in the Mesos Management Console: [http://172.31.1.11:5050](http://172.31.1.11:5050)
 
 
-### Next build and deploy Load-Simulators
+#### Next build and deploy Load-Simulators
 
 [Load-Simulators](https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATOR.md)
 
 
-### Reset Scheduler
+#### Reset Scheduler
 
 To simply reset the scheduler for example to start a new fresh experiment:
 
@@ -32,7 +32,7 @@ To simply reset the scheduler for example to start a new fresh experiment:
 ./bin/reset_scheduler
 ```
 
-### Redeploy Scheduler
+#### Redeploy Scheduler
 
 Pull changes from the github project, compile the code and re-start it
 

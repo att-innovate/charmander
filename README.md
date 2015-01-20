@@ -103,7 +103,7 @@ Some additional open source projects and a blog post that have inspired us:
 [4]: https://github.com/att-innovate/charmander-spark
 [5]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPNODES.md
 [6]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSCHEDULER.md
-[7]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATORS.md
+[7]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATOR.md
 [8]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPANALYTICS.md
 [9]: https://github.com/att-innovate/charmander/blob/master/docs/RUNEXPERIMENT.md
 [9]: https://github.com/att-innovate/charmander/blob/master/docs/SPARKANALYTICS.md
