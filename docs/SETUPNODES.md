@@ -30,8 +30,8 @@ Installation:
 
 ### Default Configuration, 4 Node Cluster
 
-The script by default creates 4 nodes (master1, slave1 .. 3), and the analytics node is set to slave1.
-The default configuration is defined in `cluster.yml`.
+The script by default creates a 4 node cluster (master1, slave1 .. 3). Slave1 will host the analytics stack and slave2 and slave 3
+become lab nodes. The default configuration is defined in `cluster.yml`.
 
     # Mesos cluster configurations
 
@@ -54,7 +54,7 @@ The default configuration is defined in `cluster.yml`.
     slave_cpus     : 2
 
 
-Changes in that file require a complete rebuild of all the nodes.
+Changes in that file require a **complete rebuild** of all the nodes.
 
 
 ### Initial Bootstrap
@@ -82,7 +82,7 @@ To reboot in to a fresh test-environment:
     vagrant halt
     vagrant up
 
-### Destroy test environment
+### Destroy Charmander environment
 
     vagrant destroy
 
