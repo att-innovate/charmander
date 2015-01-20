@@ -34,7 +34,7 @@ To simply reset the scheduler for example to start a new fresh experiment:
 
 ### Redeploy Scheduler
 
-Pull changes from the github project, compile the code and re-run it
+Pull changes from the github project, compile the code and re-start it
 
 ```
 ./bin/deploy_scheduler

@@ -14,7 +14,7 @@ those results can be **fed back** in to the scheduler.
 
 
 
-###Setup and Run Charmander###
+###Setup and Run Charmander
 
 All that is required to run a simple lab setup and an experiment is _Vagrant_, _VirtualBox_, _curl_ and a bit of spare time.
 All the steps are automated and are part of simple scripts that already come with the Charmander project.
@@ -42,10 +42,10 @@ All the steps are automated and are part of simple scripts that already come wit
 
     - Build and run a simple experiment that changes the resource allocation based on insights from previous runs
 
-6. [Spark Analytics][5]
+6. [Spark Analytics][10]
 
-    - How to run and use Spark in context of Charmander
-    - How to build and use iPython and [Spark-Kernel][5], _experimental_!
+    - How to run and use Spark with Charmander
+    - How to build and use iPython and [Spark-Kernel][11], _experimental_!
 
 7. [Scheduler API][5]
 
@@ -62,7 +62,7 @@ All the steps are automated and are part of simple scripts that already come wit
 
 
 
-###The different Charmander projects on GitHub###
+###The different Charmander projects on GitHub
 
 
 1. [github.com/att-innovate/charmander][1]
@@ -86,10 +86,10 @@ All the steps are automated and are part of simple scripts that already come wit
 
 
 
-###Thanks!###
+###Thanks!
 
 
-###How to Contribute###
+###How to Contribute
 
 [1]: https://github.com/att-innovate/charmander
 [2]: https://github.com/att-innovate/charmander-scheduler
@@ -100,3 +100,5 @@ All the steps are automated and are part of simple scripts that already come wit
 [7]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATORS.md
 [8]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPANALYTICS.md
 [9]: https://github.com/att-innovate/charmander/blob/master/docs/RUNEXPERIMENT.md
+[9]: https://github.com/att-innovate/charmander/blob/master/docs/SPARKANALYTICS.md
+[11]: https://github.com/ibm-et/spark-kernel
