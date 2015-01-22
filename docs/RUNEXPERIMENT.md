@@ -1,59 +1,73 @@
 Run simple Experiment - maxusage
 --------------------------------
 
-#### Deploy Charmander-Scheduler
-
-Install and start up Charmander-Scheduler, our "Mesos-Framework"
-
-```
-./bin/deploy_scheduler
-```
-
-Verify that it shows up under Frameworks in the Mesos Management Console.
+Our MaxUsage-Experiment will analyze the actual memory usage of a running simulator and use that result to overwrite
+the memory-allocation for subsequent run-requests for the same simulator.
 
 
-#### Start cAdvisor
+#### Build and deploy the "max-usage" analyzer
+The max-usage Analyzer is implemented in Scala using Spark-Streamning and Spark-SQL.
 
-Deploys cAdvisor to all the slave nodes
+The code can be found in Github in [MaxUsage.scala](https://github.com/att-innovate/charmander/blob/master/analytics/spark/maxusage/src/main/scala/MaxUsage.scala).
+
+One can argue that using Spark to resolve the max memory usage of a simulator is an over-kill .. but hey, we had
+to try out streaming and Spark-SQL.
+
+Lets build it.
+
+    ./bin/build_maxusage
+
+This command builds max-usage and creates a corresponding Docker image. This command will take some time to finish the first time you run it.
+
+
+#### Start cAdvisor and Analytics-Stack
 
     ./bin/start_cadvisor
-
-Mesos console can be used to check on cAdvisor status.
-
-cAdvisor WebUI will become available on all the slave nodes at:
-
-Slave1: [http://172.31.2.11:31500](http://172.31.2.11:31500)
-
-Slave2: [http://172.31.2.12:31500](http://172.31.2.12:31500)
-
-Slave3: [http://172.31.2.13:31500](http://172.31.2.13:31500)
-
-
-#### Start Analytics Stack
-
-Deploy Analytics stack (InfluxDB, Redis, Heapster, Spark) on the slave1 as configured in `cluster.yml`
-
     ./bin/start_analytics
 
-Redis and InfluxDB's WebUI will become available on slave1 at:
+#### Start two instances of the lookbusy simulator
 
-Redis: [http://172.31.2.11:31610](http://172.31.2.11:31610)
+    ./bin/start_lookbusy200mb
+    ./bin/start_lookbusy200mb
 
-InfluxDB: [http://172.31.2.11:31400](http://172.31.2.11:31400)
+#### Start max-usage
 
-InfluxDB username and password: root
+    ./bin/start_maxusage
 
-InfluxDB Hostname and Port Settings: 172.31.2.11 31410 and no SSL
+#### Verify the experiment setup in Redis
 
+Redis-UI can be found at: [http://172.31.2.11:31610](http://172.31.2.11:31610)
+The information in Redis gets updated by the scheduler every 15s. Give it some time to get synchronized.
 
-#### Reset the Charmander environment
+You should the see something like:
 
-To reset the environment in to a fresh state:
+![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/Redis.png?raw=true)
 
-```
-./bin/reset_scheduler
-./bin/start_cadvisor
-./bin/start_analytics
-```
+Redis shows all the 3 slaves/nodes, all the currently running tasks, all the "metered" tasks, and the "intelligence" collected
+by maxusage in the task-intelligence section. The _mem_ value represent the highest memory-use of a metered task, for lookbusy it should
+be something roughly _209928192_. _210MB_
 
+#### Verify idle memory
 
+Open the Mesos console at [http://172.31.1.11:5050](http://172.31.1.11:5050) and look for the _Resources_ _idle_ number at the bottom left.
+It should roughly be _582MB_.
+
+#### Redeploy simulators
+
+  ./bin/reshuffle
+
+This command will kill and restart our running simulators. The Mesos can be used to see the progress of the "reshuffling".
+
+#### Verify idle memory
+
+The memory allocation for the lookbusy-tasks got lowered by the scheduler from originally _300MB_ to now _230MB_ (maxusage + 10% safety).
+That decrease in allocated memory should increase the amount of idle memory.
+
+Open Mesos console at [http://172.31.1.11:5050](http://172.31.1.11:5050) and look for the _Resources_ _idle_ number at the bottom left.
+It should now roughly be _722MB_.
+
+#### That's it, let's clean up
+
+    ./bin/reset_cluster
+
+This commands resets the cluster by killing all the running tasks. We are ready for a new experiment.

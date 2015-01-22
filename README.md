@@ -3,7 +3,7 @@ Charmander Scheduler Lab
 
 Charmander is a lab environment for measuring and analyzing resource-scheduling algorithms.
 
-The project got started in Summer 2014 by Theodora Chu as an internship project. It was motivation by a [paper][18] from
+The project got started in Summer 2014 by Theodora Chu as an internship project. It was motivated by a [paper][18] from
 Stanford University: "Quasar: Resource-Efficient and QoS-Aware Cluster Management".
 
 Charmander at its core provides an easy to use environment to a) **schedule** and **deploy** compute-tasks in a multi-node setup
@@ -91,6 +91,12 @@ All the steps are automated and are part of simple scripts that come with the Ch
 
 #### How to Contribute
 
+
+#### Tips and Tricks
+- /etc/hosts
+- reset scheduler
+- Reboot cluster
+- Redis update every 15s
 
 #### Thanks!
 
