@@ -37,8 +37,8 @@ This command builds max-usage and creates a corresponding Docker image. This com
 #### Verify the experiment setup in Redis
 
 Redis-UI can be found at: [http://172.31.2.11:31610](http://172.31.2.11:31610)
-The information in Redis gets updated by the scheduler every 15s. Give it some time to get synchronized.
 
+The information in Redis gets updated by the scheduler every 15s. Give it some time to get synchronized.
 You should the see something like:
 
 ![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/Redis.png?raw=true)
@@ -54,7 +54,7 @@ It should roughly be _582MB_.
 
 #### Redeploy simulators
 
-  ./bin/reshuffle
+    ./bin/reshuffle
 
 This command will kill and restart our running simulators. The Mesos can be used to see the progress of the "reshuffling".
 

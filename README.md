@@ -115,7 +115,7 @@ Some additional open source projects and a blog post that have inspired us:
 [7]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATOR.md
 [8]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPANALYTICS.md
 [9]: https://github.com/att-innovate/charmander/blob/master/docs/RUNEXPERIMENT.md
-[9]: https://github.com/att-innovate/charmander/blob/master/docs/SPARKANALYTICS.md
+[10]: https://github.com/att-innovate/charmander/blob/master/docs/SPARKANALYTICS.md
 [11]: https://github.com/ibm-et/spark-kernel
 [15]: https://github.com/VoltFramework/volt
 [16]: https://github.com/mesos/mesos-go
