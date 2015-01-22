@@ -39,35 +39,35 @@ This command builds max-usage and creates a corresponding Docker image. This com
 Redis-UI can be found at: [http://172.31.2.11:31610](http://172.31.2.11:31610)
 
 The information in Redis gets updated by the scheduler every 15s. Give it some time to get synchronized.
-You should the see something like:
+You should then see something like:
 
 ![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/Redis.png?raw=true)
 
 Redis shows all the 3 slaves/nodes, all the currently running tasks, all the "metered" tasks, and the "intelligence" collected
-by maxusage in the task-intelligence section. The _mem_ value represent the highest memory-use of a metered task, for lookbusy it should
-be something roughly _209928192_. _210MB_
+by maxusage in the task-intelligence section. The _mem_ value represents the highest memory-use of a metered task, for lookbusy it should
+be something roughly _210MB_ (_209928192_).
 
 #### Verify idle memory
 
 Open the Mesos console at [http://172.31.1.11:5050](http://172.31.1.11:5050) and look for the _Resources_ _idle_ number at the bottom left.
-It should roughly be _582MB_.
+It should be something like _582MB_.
 
 #### Redeploy simulators
 
     ./bin/reshuffle
 
-This command will kill and restart our running simulators. The Mesos can be used to see the progress of the "reshuffling".
+This command will kill and restart our running simulators. The Mesos console can be used to see the progress of the _reshuffling_.
 
 #### Verify idle memory
 
-The memory allocation for the lookbusy-tasks got lowered by the scheduler from originally _300MB_ to now _230MB_ (maxusage + 10% safety).
-That decrease in allocated memory should increase the amount of idle memory.
+The memory allocation for the lookbusy-tasks got lowered now by the scheduler from originally _300MB_ to now _230MB_ (maxusage + 10% safety).
+That decrease in allocated memory should increase the amount of idle memory for the cluster.
 
 Open Mesos console at [http://172.31.1.11:5050](http://172.31.1.11:5050) and look for the _Resources_ _idle_ number at the bottom left.
-It should now roughly be _722MB_.
+It should now be roughly _722MB_.
 
 #### That's it, let's clean up
 
     ./bin/reset_cluster
 
-This commands resets the cluster by killing all the running tasks. We are ready for a new experiment.
+This commands resets the cluster by killing all the running tasks, and we are ready for a new experiment.
