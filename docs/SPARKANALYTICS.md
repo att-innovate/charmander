@@ -5,7 +5,7 @@ Spark Analytics - Build your own Experiment
 All the collected data of your _metered_ simulators/tasks is available in **InfluxDB** via the [InfluxDB-API](http://influxdb.com/docs/v0.7/api/reading_and_writing_data.html).
 
 We put together a [simple library](https://github.com/att-innovate/charmander-spark/blob/master/src/main/scala/org/att/charmander/CharmanderUtils.scala)
-that should simplify the access to the data from Spark/Scala. The available functions are:
+that gives you easy access to the data from Spark/Scala. Some available functions are:
 
     def getMeteredTaskNamesFromRedis(): List[String]
     def getRDDForTask(sc: SparkContext, taskName: String, attributeName: String, numberOfPoints: Int): RDD[List[BigDecimal]]
@@ -49,9 +49,9 @@ Example: Force lookbusy200 to always be deployed to slave2
     CharmanderUtils.setTaskIntelligence("lookbusy200", "nodename", "slave2")
 
 
-#### Build and use the Charmander-Spark Utils locally
-You can use the library that comes with the Charmander project. For example lets copy that library in to your /tmp directory
-and use it with Spark-shell.
+#### Build and use our Spark utilties library locally
+Use the library that comes with the Charmander project. Copy that library in to your /tmp directory for example
+and use it with Spark-shell:
 
     git clone https://github.com/att-innovate/charmander
     cp charmander/analytics/spark/sparkkernel/files/charmander-utils_2.10-1.0.jar /tmp
@@ -61,7 +61,7 @@ and use it with Spark-shell.
     ./bin/spark-shell --jars /tmp/charmander-utils_2.10-1.0.jar
 
     //verify that you can import the library
-    scala> import org.att.charmander.CharmanderUtils
+    import org.att.charmander.CharmanderUtils
 
 And of course you can build the library yourself:
 
@@ -75,7 +75,7 @@ And of course you can build the library yourself:
     // build it
     sbt assemble
 
-    // copy it to the tmp directoy
+    // copy the library to the tmp directoy
     cp target/scala-2.10/charmander-utils_2.10-1.0.jar /tmp
 
     //cd to your local spark deployment
@@ -83,18 +83,18 @@ And of course you can build the library yourself:
     ./bin/spark-shell --jars /tmp/charmander-utils_2.10-1.0.jar
 
     //verify that you can import the library
-    scala> import org.att.charmander.CharmanderUtils
+    import org.att.charmander.CharmanderUtils
 
 #### Spark-Shell: Simple example
 
-Start Analytics-Stack and the lookbusy60mb
+Start Analytics-Stack and the lookbusy60mb simulator
 
     ./bin/reset_cluster
     ./bin/start_cadvisor
     ./bin/start_analytics
     ./bin/start_lookbusy80mb
 
-Let it run for a bit and verify that everything is up and running using [Redis](http://172.31.2.11:31610).
+Let it run for a bit. You can verify that everything is up and running using [Redis](http://172.31.2.11:31610).
 
 Start your Spark-shell
 
@@ -106,9 +106,40 @@ Start your Spark-shell
 Retrieve 200 data-points as RDD and print them out using the Spark-shell
 
     import org.att.charmander.CharmanderUtils
-    CharmanderUtils.getMeteredTaskNamesFromRedis
-    val memoryUsage= CharmanderUtils.getRDDForNode(sc, "slave2", "memory_usage", 200)
-    memoryUsage.foreach(println)
+    val datapoints= CharmanderUtils.getRDDForTask(sc, "lookbusy80", "memory_usage", 200)
+    datapoints.foreach(println)
 
-#### Spark-Kernel - experimental
+
+#### Spark-Kernel - experimental!
+
+IBM recently open-sourced their [Spark-Kernel](https://github.com/ibm-et/spark-kernel) project.
+It allows you to run the Spark-Shell as a _Notebook_ in jupyter (previously known as iPython).
+
+Charmander includes scripts to build and run a Spark-Kernel docker image.
+
+Lets build the Docker image. Be warned, the first time you run it that build takes a loooooooong type to complete.
+
+    ./bin/build_sparkkernel
+
+Run Spark-Kernel with Charmander
+
+    ./bin/reset_cluster
+    ./bin/start_cadvisor
+    ./bin/start_analytics
+    ./bin/start_lookbusy80mb
+    ./bin/start_sparkkernel
+
+Open Spark-Kernel/jupyter at [172.31.2.11:31800/](172.31.2.11:31800/)
+
+Open the _CharmanderUtils.ipynb_ notebook and wait until you see a "Kernel Ready" message popping up in the notebook
+header, that takes roughly 10s. And you should see something like this:
+
+![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/SparkKernel.png?raw=true)
+
+You can now execute all the _cells_ using _Cell/Run All_ .. Have fun!
+
+
+
+
+
 
