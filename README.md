@@ -14,12 +14,14 @@ and b) **measure** the corresponding cpu, memory, and network-loads.
 The collected measurements can afterwards be **analyzed** using the included Spark analytics workbench and subsequently
 those results can be **fed back** in to the scheduler.
 
-Obviously this lab-setup can be used for other use-cases like testing and analyzing machine-learning based anomaly-detection
-or profiling algorithms, or simply serving as the load-pattern verification authority in a continuous integration environment.
+Obviously this lab-setup can be used for other use-cases like testing and analyzing machine-learning based anomaly-detection,
+noisy-neighbor detection, or profiling algorithms, or simply serving as the load-pattern verification authority in a continuous integration environment.
 
 #### Setup and Run Charmander
 
-All that is required to run a simple lab setup and an experiment is _Vagrant_, _VirtualBox_, _curl_ and a bit of spare time.
+All that is required to run a simple lab setup and an experiment is _Vagrant_, _VirtualBox_, _curl_, a fast internet connection,
+and a bit of spare time.
+
 All the steps are automated and are part of simple scripts that come with the Charmander project.
 
 1. [Setup Nodes][5]
@@ -45,8 +47,9 @@ All the steps are automated and are part of simple scripts that come with the Ch
 
     - Build and run a simple experiment that changes the resource allocation based on insights from previous runs
 
-6. [Spark Analytics][10]
+6. [Spark Analytics - Build your own Experiment][10]
 
+    - What are the extension point to build your own Experiment
     - How to run and use Spark with Charmander
     - How to build and use iPython and [Spark-Kernel][11], _experimental_!
 

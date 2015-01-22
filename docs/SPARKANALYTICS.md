@@ -1,81 +1,114 @@
-Setup Analytics-Stack
----------------------
+Spark Analytics - Build your own Experiment
+-------------------------------------------
 
-#### Deploy Charmander-Scheduler
+#### Data-Source
+All the collected data of your _metered_ simulators/tasks is available in **InfluxDB** via the [InfluxDB-API](http://influxdb.com/docs/v0.7/api/reading_and_writing_data.html).
 
-Install and start up Charmander-Scheduler, our "Mesos-Framework"
+We put together a [simple library](https://github.com/att-innovate/charmander-spark/blob/master/src/main/scala/org/att/charmander/CharmanderUtils.scala)
+that should simplify the access to the data from Spark/Scala. The available functions are:
 
-```
-./bin/deploy_scheduler
-```
+    def getMeteredTaskNamesFromRedis(): List[String]
+    def getRDDForTask(sc: SparkContext, taskName: String, attributeName: String, numberOfPoints: Int): RDD[List[BigDecimal]]
+    def getRDDForNode(sc: SparkContext, nodeName: String, attributeName: String, numberOfPoints: Int): RDD[List[BigDecimal]]
 
-Verify that is shows up under Frameworks in the Mesos Management Console.
+Example: Retrieve the currently active metered tasks:
 
+    val tasks = CharmanderUtils.getMeteredTaskNamesFromRedis
 
-#### Deploy cAdvisor
+Example: Get 200 memory_usage data-points for lookbusy200 simulator:
 
-Deploys cAdvisor to all the slave nodes
+    val memoryUsage= CharmanderUtils.getRDDForTask(sc, "lookbusy200", "memory_usage", 200)
 
-```
-./bin/start_cadvisor
-```
+Example: Get 200 memory_usage data-points for the _slave2_ node:
 
-Mesos console can be used to check on cAdvisor status.
-
-cAdvisor WebUI will become available on all the slave nodes at:
-
-Slave1: [http://172.31.2.11:31500](http://172.31.2.11:31500)
-
-Slave2: [http://172.31.2.12:31500](http://172.31.2.12:31500)
-
-Slave3: [http://172.31.2.13:31500](http://172.31.2.13:31500)
+    val memoryUsage= CharmanderUtils.getRDDForNode(sc, "slave2", "memory_usage", 200)
 
 
-#### Build and start Analytics Stack
+#### Destination for Task-Intelligence
+The output of your analysis can be fed back in to the scheduler via Redis. The keys in Redis have to be in a certain form
+to be understood by the Charmander-Scheduler.
 
-Deploy Analytics stack (InfluxDB, Redis, Heapster, Spark) on the slave1 as configured in `cluster.yml`
+To simplify the setting of those findings our [library](https://github.com/att-innovate/charmander-spark/blob/master/src/main/scala/org/att/charmander/CharmanderUtils.scala)
+offers following function:
 
-```
-./bin/build_analytics
-./bin/start_analytics
-```
+    def setTaskIntelligence(taskName: String, attributeName: String, value: String)
+    def getTaskIntelligence(taskName: String, attributeName: String): String
 
-Redis and InfluxDB's WebUI will become available on slave1 at:
+Example: Overwrite the memory allocation for lookbusy200 to 400
 
-Redis: [http://172.31.2.11:31610](http://172.31.2.11:31610)
+    // Redis key to overwrite memory allocation: charmander:task-intelligence:lookbusy200:mem
+    CharmanderUtils.setTaskIntelligence("lookbusy200", "mem", "400")
 
-InfluxDB: [http://172.31.2.11:31400](http://172.31.2.11:31400)
+Example: Retrieve previously set overwrite for memory allocation for lookbusy200
 
-InfluxDB username and password: root
+    val mem = CharmanderUtils.getTaskIntelligence("lookbusy200", "mem")
 
-InfluxDB Hostname and Port Settings: 172.31.2.11 31410 and no SSL
+Example: Force lookbusy200 to always be deployed to slave2
+
+    // Redis key to overwrite memory allocation: charmander:task-intelligence:lookbusy200:nodename
+    CharmanderUtils.setTaskIntelligence("lookbusy200", "nodename", "slave2")
 
 
-#### Reset the Charmander environment
+#### Build and use the Charmander-Spark Utils locally
+You can use the library that comes with the Charmander project. For example lets copy that library in to your /tmp directory
+and use it with Spark-shell.
 
-To reset the environment in to a fresh state:
+    git clone https://github.com/att-innovate/charmander
+    cp charmander/analytics/spark/sparkkernel/files/charmander-utils_2.10-1.0.jar /tmp
 
-```
-./bin/reset_scheduler
-./bin/start_cadvisor
-./bin/start_analytics
-```
+    //cd to your local spark deployment
+    cd spark-1.2.0
+    ./bin/spark-shell --jars /tmp/charmander-utils_2.10-1.0.jar
 
-#### Reboot of the Charmander environment
+    //verify that you can import the library
+    scala> import org.att.charmander.CharmanderUtils
 
-To reboot in to a fresh test-environment:
+And of course you can build the library yourself:
 
-```
-vagrant halt
-vagrant up
-./bin/reset_scheduler
-./bin/start_cadvisor
-./bin/start_analytics
-```
+    git clone https://github.com/att-innovate/charmander-spark
+    cd charmander-spark
 
-#### Destroy test environment
+    // verify that you have Java and sbt (>= 0.13.6) installed
+    java -version
+    sbt --version
 
-```
-vagrant destroy
-```
+    // build it
+    sbt assemble
+
+    // copy it to the tmp directoy
+    cp target/scala-2.10/charmander-utils_2.10-1.0.jar /tmp
+
+    //cd to your local spark deployment
+    cd spark-1.2.0
+    ./bin/spark-shell --jars /tmp/charmander-utils_2.10-1.0.jar
+
+    //verify that you can import the library
+    scala> import org.att.charmander.CharmanderUtils
+
+#### Spark-Shell: Simple example
+
+Start Analytics-Stack and the lookbusy60mb
+
+    ./bin/reset_cluster
+    ./bin/start_cadvisor
+    ./bin/start_analytics
+    ./bin/start_lookbusy80mb
+
+Let it run for a bit and verify that everything is up and running using [Redis](http://172.31.2.11:31610).
+
+Start your Spark-shell
+
+    //cd to your local spark deployment
+    //adjust the path to charmander-utils.jar accordingly
+    cd spark-1.2.0
+    ./bin/spark-shell --jars /tmp/charmander-utils_2.10-1.0.jar
+
+Retrieve 200 data-points as RDD and print them out using the Spark-shell
+
+    import org.att.charmander.CharmanderUtils
+    CharmanderUtils.getMeteredTaskNamesFromRedis
+    val memoryUsage= CharmanderUtils.getRDDForNode(sc, "slave2", "memory_usage", 200)
+    memoryUsage.foreach(println)
+
+#### Spark-Kernel - experimental
 
