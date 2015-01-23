@@ -57,14 +57,13 @@ All the steps are automated and are part of simple scripts that come with the Ch
 
     - List of all the different Scheduler REST APIs
 
-8. [Modify Scheduler][13]
-
-    - How to change and modify the Charmander Scheduler
-    - Run the Scheduler locally
-
-9. [Script Reference][14]
+8. [Script Reference][13]
 
     - List of all the include scripts/tools
+
+9. [Tips and Tricks][14]
+
+    - Some tips and tricks for common issues
 
 
 
@@ -92,16 +91,7 @@ All the steps are automated and are part of simple scripts that come with the Ch
 
 
 
-#### How to Contribute
-
-
-#### Tips and Tricks
-- /etc/hosts
-- reset scheduler
-- Reboot cluster
-- Redis update every 15s
-
-#### Thanks!
+#### Additional thanks to
 
 Some additional open source projects and a blog post that have inspired us:
 - [VoltFramework][15]
@@ -120,6 +110,9 @@ Some additional open source projects and a blog post that have inspired us:
 [9]: https://github.com/att-innovate/charmander/blob/master/docs/RUNEXPERIMENT.md
 [10]: https://github.com/att-innovate/charmander/blob/master/docs/SPARKANALYTICS.md
 [11]: https://github.com/ibm-et/spark-kernel
+[12]: https://github.com/att-innovate/charmander/blob/master/docs/SCHEDULERAPI.md
+[13]: https://github.com/att-innovate/charmander/blob/master/docs/SCRIPTS.md
+[14]: https://github.com/att-innovate/charmander/blob/master/docs/TRICKSTIPS.md
 [15]: https://github.com/VoltFramework/volt
 [16]: https://github.com/mesos/mesos-go
 [17]: http://blog.relateiq.com/a-docker-dev-environment-in-24-hours-part-2-of-2/
