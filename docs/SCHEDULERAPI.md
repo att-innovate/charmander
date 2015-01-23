@@ -1,8 +1,8 @@
 Scheduler-API
 -------------
 
-The Charmander-Scheduler offers a REST-like API to all the task scheduling functionality. We assume that Charmander is
-running at its default location at `172.31.1.11:7075`.
+The Charmander-Scheduler offers a REST-like API to its task scheduling functionality. For this documentation
+we assume that Charmander is running at its default location at `172.31.1.11:7075`.
 
 #### Admin API
 
@@ -16,7 +16,9 @@ Should return a _pong_.
 
 **Start a Task**
 
-To start a task in Mesos you will have to pass in a task-configuration (in json). Example configuration for cAdvisor:
+To start a task in Mesos you will have to pass in a task-configuration.
+
+Example configuration for cAdvisor:
 
     {
         "id":          "cadvisor",
@@ -127,7 +129,7 @@ Returns a detailed list of all the tasks (scheduled and running).
 
 **Kill Task**
 
-Kill all tasks whose task id starts with _stress_
+Kill all tasks whose task id starts with _stress_ for example
 
     curl -X DELETE 172.31.1.11:7075/client/task/stress
 
@@ -137,12 +139,13 @@ This should return a list of all the tasks that are planned to be killed. Only r
 
 **Reshuffle Tasks**
 
-After you have collected _intelligence_ about the running simulators you typically want to verify that impact it has on
-the distribution. Reshuffle will restart all the currently running simulators (`"reshuffleable": true`).
+After you have collected _intelligence_ about the running simulators you typically want to verify the impact it has on
+future distribution. Reshuffle will restart all the currently running simulators (`"reshuffleable": true`) based on the
+collected _task-intelligence_.
 
     curl 172.31.1.11:7075/client/task/reshuffle
 
-and you will get a confirmation for that request.
+.. and you will get a confirmation for that request.
 
     {"code":202,"message":"Reshuffle tasks"}
 

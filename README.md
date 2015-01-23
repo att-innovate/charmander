@@ -91,9 +91,9 @@ All the steps are automated and are part of simple scripts that come with the Ch
 
 
 
-#### Additional thanks to
+#### Additional thanks goes to
 
-Some additional open source projects and a blog post that have inspired us:
+Some open source projects and a blog post that have inspired us:
 - [VoltFramework][15]
 - [Mesos-Go][16]
 - [A Docker Dev Environment in 24 Hours!][17]
