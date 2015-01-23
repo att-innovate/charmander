@@ -1,8 +1,8 @@
-Scripts
--------
+Script Reference
+----------------
 
-List of all the scripts that come with Charmander and can be found in the `./bin` directory. It gets assumed that they
-all get started from the root of the Charmander project, example `./bin/start_cadvisor`.
+A list of all the scripts that come with Charmander and can be found in the `./bin` directory.
+The scripts should get started from the root of the Charmander project, example `./bin/start_cadvisor`.
 
 **Build Scripts**
 
@@ -39,6 +39,12 @@ The following commands can be used to start individual tasks and task groups
     start_maxusage      : starts max-usage analyzer
     start_sparkkernel   : the spark-kernel installation (spark, iPython, spark-kernel)
     start_stress60mb    : starts stress simulator consuming not more than 60MB
+
+
+
+#### Next Tips and Tricks
+
+[Tips and Tricks](https://github.com/att-innovate/charmander/blob/master/docs/TRICKSTIPS.md)
 
 
 

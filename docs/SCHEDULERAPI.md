@@ -1,7 +1,7 @@
 Scheduler-API
 -------------
 
-The Charmander-Scheduler offers a REST-like API to its task scheduling functionality. For this documentation
+The Charmander-Scheduler offers a REST-like API for its task scheduling functionality. For this documentation
 we assume that Charmander is running at its default location at `172.31.1.11:7075`.
 
 #### Admin API
@@ -100,24 +100,24 @@ Example configration for influxdb:
 
 Field-definitions:
 
-    id           The name of the task. Charmander will internally add a timestamp to the id to make it unique.
+    id           The name of the task. Charmander will internally add a timestamp to the id to make it unique
     dockerimage  The name of the docker image to start
     mem          Memory-allocation requested
-    cpus         Percentage of cpu request
-    sla          Current sla-types are "one-per-node" (see cAdvisor) and "singleton" (see influxdb)
-    nodetype     Node-types are either "analytics" (for analytics node) and "lab" (for lab nodes)
+    cpus         Percentage of cpu requested
+    sla          Current supported sla-types are "one-per-node" (see cAdvisor) and "singleton" (see influxdb)
+    nodetype     Node-types can be either "analytics" (for analytics node) and "lab" (for lab nodes)
     notmetered   Defines if the metrics of a task gets metered/collected or not
     reshuffeable Defines if a task will be restarted by the "reshuffle" command. Typically set for simulators
-    ports        Port-mapping for the container. _host_port_ and _container_port_ used to define intern and external port
-    volumes      Volume-mapping for the container. _host_path_, _container_path_, and _mode_ define the mapping of volumes
-    arguments    Additional arguments that will get passed to the _cmd_ to the _ENTRY_POINT_ of the docker image
+    ports        Port-mapping for the container. "host_port" and "container_port" used to define intern and external port
+    volumes      Volume-mapping for the container. "host_path", "container_path", and "mode" define the mapping of volumes
+    arguments    Additional arguments that will get passed to the ENTRY_POINT of the docker image
 
 
 Example: Start stress60mb
 
     curl -s -X POST -T loadsimulator/stress/stress60mb.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task
 
-Which returns a confirmation that the task request got accepted and is waiting for a matching offer from Mesos to get started
+Which returns a confirmation that the task request got accepted and is now waiting for a matching offer from Mesos to get started
 
     {"code":202,"message":"Run task: stress60"}
 
@@ -129,7 +129,7 @@ Returns a detailed list of all the tasks (scheduled and running).
 
 **Kill Task**
 
-Kill all tasks whose task id starts with _stress_ for example
+Example: Kill all tasks whose task id starts with _stress_
 
     curl -X DELETE 172.31.1.11:7075/client/task/stress
 
@@ -145,7 +145,13 @@ collected _task-intelligence_.
 
     curl 172.31.1.11:7075/client/task/reshuffle
 
-.. and you will get a confirmation for that request.
+.. response you get.
 
     {"code":202,"message":"Reshuffle tasks"}
+
+
+
+#### Next Script Reference
+
+[Script Reference](https://github.com/att-innovate/charmander/blob/master/docs/SCRIPTS.md)
 

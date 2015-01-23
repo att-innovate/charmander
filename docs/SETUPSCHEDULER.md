@@ -1,5 +1,5 @@
-Setup Scheduler
----------------
+Build and deploy Scheduler
+--------------------------
 
 The Charmander-Scheduler is our own lab-specific Mesos-Framework. As a typical Mesos-Framework it handles the allocation of
 the tasks to the individual nodes based on offers it receives from Mesos.

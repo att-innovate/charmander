@@ -39,7 +39,7 @@ Example: Overwrite the memory allocation for lookbusy200 to 400
     // Redis key to overwrite memory allocation: charmander:task-intelligence:lookbusy200:mem
     CharmanderUtils.setTaskIntelligence("lookbusy200", "mem", "400")
 
-Example: Retrieve previously set overwrite for memory allocation for lookbusy200
+Example: Retrieve previously set memory allocation for lookbusy200
 
     val mem = CharmanderUtils.getTaskIntelligence("lookbusy200", "mem")
 
@@ -50,7 +50,7 @@ Example: Force lookbusy200 to always be deployed to slave2
 
 
 #### Build and use our Spark utilties library locally
-Use the library that comes with the Charmander project. Copy that library in to your /tmp directory for example
+Use the library that comes with the Charmander project. Copy that library in to your `/tmp` directory for example
 and use it with Spark-shell:
 
     git clone https://github.com/att-innovate/charmander
@@ -129,15 +129,20 @@ Run Spark-Kernel with Charmander
     ./bin/start_lookbusy80mb
     ./bin/start_sparkkernel
 
-Open Spark-Kernel/jupyter at [172.31.2.11:31800/](172.31.2.11:31800/)
+Open Spark-Kernel/jupyter at [172.31.2.11:31800/](http://172.31.2.11:31800/)
 
 Open the _CharmanderUtils.ipynb_ notebook and wait until you see a "Kernel Ready" message popping up in the notebook
-header, that takes roughly 10s. And you should see something like this:
+header, that takes roughly 10s, and you should see something like this:
 
 ![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/SparkKernel.png?raw=true)
 
-You can now execute all the _cells_ using _Cell/Run All_ .. Have fun!
+You can now execute all the _cells_ using menu _Cell/Run All_ .. Have fun!
 
+
+
+#### Next learn about the Scheduler API
+
+[Scheduler API](https://github.com/att-innovate/charmander/blob/master/docs/SCHEDULERAPI.md)
 
 
 
