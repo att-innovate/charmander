@@ -52,3 +52,7 @@ charmander is listed as an active framework. In case of an issue just restart th
 
     ./bin/reset_cluster
 
+
+#### That's it, back to the homepage
+
+[Homepage](https://github.com/att-innovate/charmander/)

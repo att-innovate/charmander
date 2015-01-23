@@ -38,8 +38,8 @@ This command builds max-usage and creates a corresponding Docker image. This com
 
 Redis-UI can be found at: [http://172.31.2.11:31610](http://172.31.2.11:31610)
 
-The information in Redis gets updated by the scheduler every 15s. Give it some time to get synchronized.
-You should then see something like:
+The information in Redis gets updated by the scheduler every 15s. Give it some time to get synchronized. Refresh the page
+until "task-intelligence" shows up. You should then see something like:
 
 ![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/Redis.png?raw=true)
 
@@ -64,7 +64,27 @@ The memory allocation for the lookbusy-tasks got lowered now by the scheduler fr
 That decrease in allocated memory should increase the amount of idle memory for the cluster.
 
 Open Mesos console at [http://172.31.1.11:5050](http://172.31.1.11:5050) and look for the _Resources_ _idle_ number at the bottom left.
-It should now be roughly _722MB_.
+It should now be roughly _720MB_.
+
+#### Timeseries in InfluxDB
+
+In case you are curious about the raw timeseries stored in InfluxDB. InfluxDB is available at [http://172.31.2.11:31400](http://172.31.2.11:31400)
+
+To Login: Username/password: both _root_ , hostname: _172.31.2.11_ and port _31410_
+
+After log in click on "Explore Data" for charmander and execute following queries:
+
+    select memory_usage from machine where hostname='slave1' limit 200
+
+This returns and shows a histogram based on 200 data points
+
+To get the memory usage for the lookbusy simulators try
+
+    select memory_usage from stats where container_name =~ /lookbusy*/ limit 10
+
+This returns 10 datapoints for the lookbusy simulator. Based on the fact that lookbusy allocates a fixed set of memory (210MB)
+you won't see any fancy graph.
+
 
 #### That's it, let's clean up
 

@@ -22,7 +22,9 @@ noisy-neighbor detection, or profiling algorithms, or simply serving as the load
 All that is required to run a simple lab setup and an experiment is _Vagrant_, _VirtualBox_, _curl_, a fast internet connection,
 and a bit of spare time.
 
-All the steps are automated and are part of simple scripts that come with the Charmander project.
+All the steps are automated and are part of simple scripts that come with the Charmander project. All the additional
+software needed during the setup gets installed and built inside the VMs, nothing additionally gets installed on
+the host itself.
 
 1. [Setup Nodes][5]
 

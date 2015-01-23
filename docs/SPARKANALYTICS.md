@@ -94,7 +94,8 @@ Start Analytics-Stack and the lookbusy60mb simulator
     ./bin/start_analytics
     ./bin/start_lookbusy80mb
 
-Let it run for a bit. You can verify that everything is up and running using [Redis](http://172.31.2.11:31610).
+Let it run for a bit. You can verify that everything is up and running using [Redis](http://172.31.2.11:31610). You
+should see 10 running tasks.
 
 Start your Spark-shell
 
@@ -119,11 +120,11 @@ Charmander includes scripts to build and run a Spark-Kernel docker image.
 
 Lets build the Docker image. Be warned, the first time you run it that build takes a loooooooong type to complete.
 
+    ./bin/reset_cluster
     ./bin/build_sparkkernel
 
 Run Spark-Kernel with Charmander
 
-    ./bin/reset_cluster
     ./bin/start_cadvisor
     ./bin/start_analytics
     ./bin/start_lookbusy80mb
@@ -131,8 +132,8 @@ Run Spark-Kernel with Charmander
 
 Open Spark-Kernel/jupyter at [172.31.2.11:31800/](http://172.31.2.11:31800/)
 
-Open the _CharmanderUtils.ipynb_ notebook and wait until you see a "Kernel Ready" message popping up in the notebook
-header, that takes roughly 10s, and you should see something like this:
+Open the _CharmanderUtils.ipynb_ notebook and wait until the Spark Kernel is ready, indicated in the header by the dot
+changing in to a circle, that takes roughly 10s, and you should see something like this:
 
 ![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/SparkKernel.png?raw=true)
 
