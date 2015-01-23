@@ -71,3 +71,6 @@ It should now be roughly _722MB_.
     ./bin/reset_cluster
 
 This commands resets the cluster by killing all the running tasks. And we are again ready for a new experiment.
+
+
+
