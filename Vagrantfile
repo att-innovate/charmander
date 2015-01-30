@@ -76,7 +76,7 @@ Vagrant.configure("2") do |config|
         pkg_once_cmd << "echo '#{host[:ip]} #{host[:hostname]}' >> /etc/hosts; "
       end
 
-        # Install node specific software
+      # Install node specific software
       if master?(ninfo[:hostname]) then
         pkg_once_cmd << "apt-get -y install mesos=#{MESOS_PACKAGE_VERSION}; "
         pkg_once_cmd << 'mkdir -p /etc/mesos-master; '
