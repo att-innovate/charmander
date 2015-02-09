@@ -20,7 +20,7 @@ EXPOSE 8888
 
 
 # Install Spark-Kernel
-ENV SPARKKERNEL_COMMIT 3f4c22a562c73a4c9e299d9c189e716725ea3ed9
+ENV SPARKKERNEL_COMMIT 2e895d612dc881059412829cc91468abe5becdab
 
 RUN git clone --recursive --single-branch https://github.com/ibm-et/spark-kernel.git \
     && cd /spark-kernel \
