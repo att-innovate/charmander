@@ -1,6 +1,6 @@
 {
     "id":          "cadvisor",
-    "dockerimage": "google/cadvisor:0.6.2",
+    "dockerimage": "google/cadvisor:0.8.0",
     "mem":         "50",
     "sla":         "one-per-node",
     "notmetered":  true,

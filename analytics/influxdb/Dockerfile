@@ -1,7 +1,7 @@
 FROM analyticsbase
 MAINTAINER Charmander
 
-ENV INFLUXDB_VERSION 0.8.7
+ENV INFLUXDB_VERSION 0.8.8
 
 RUN wget \
     --no-check-certificate \

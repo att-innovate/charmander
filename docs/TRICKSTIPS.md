@@ -10,6 +10,10 @@ local `/etc/hosts` file:
     172.31.2.12     slave2   #mesosenv
     172.31.2.13     slave3   #mesosenv
 
+**Build Issues**
+
+There are those random times when you see `tar: Unexpected EOF in archive` errors while building an image. No problem,
+just run the build script again.
 
 **Reset Scheduler**
 
