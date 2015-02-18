@@ -73,7 +73,7 @@ And of course you can build the library yourself:
     sbt --version
 
     // build it
-    sbt assemble
+    sbt package
 
     // copy the library to the tmp directoy
     cp target/scala-2.10/charmander-utils_2.10-1.0.jar /tmp
