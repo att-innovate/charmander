@@ -87,7 +87,7 @@ And of course you can build the library yourself:
 
 #### Spark-Shell: Simple example
 
-Start Analytics-Stack and the lookbusy60mb simulator
+Start Analytics-Stack and the lookbusy80mb simulator
 
     ./bin/reset_cluster
     ./bin/start_cadvisor
