@@ -120,3 +120,8 @@ some additional open source projects and a blog post that have inspired us:
 [17]: http://blog.relateiq.com/a-docker-dev-environment-in-24-hours-part-2-of-2/
 [18]: http://web.stanford.edu/group/mast/cgi-bin/drupal/content/quasar-resource-efficient-and-qos-aware-cluster-management
 
+
+
+All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them. 
+
+Pokémon character names are trademarks of Nintendo. Other trademarks are the property of their respective owners.
