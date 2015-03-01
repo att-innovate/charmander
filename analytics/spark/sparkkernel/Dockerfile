@@ -4,7 +4,7 @@ MAINTAINER Charmander
 # Install IPython3
 RUN apt-get -y install python3-pip libzmq-dev
 
-ENV IPYTHON_COMMIT 12277c751bd676d7a14770f3c8f7a5999d263f8e
+ENV IPYTHON_COMMIT f75fda4dee1b9ed5e734548180c2bdb6067a9ac8
 
 RUN git clone --recursive --single-branch https://github.com/ipython/ipython.git \
     && cd ipython \
@@ -20,7 +20,7 @@ EXPOSE 8888
 
 
 # Install Spark-Kernel
-ENV SPARKKERNEL_COMMIT 2e895d612dc881059412829cc91468abe5becdab
+ENV SPARKKERNEL_COMMIT 09a30fbe8a9d3300342fb44d29bb02b7a3bcf945
 
 RUN git clone --recursive --single-branch https://github.com/ibm-et/spark-kernel.git \
     && cd /spark-kernel \
