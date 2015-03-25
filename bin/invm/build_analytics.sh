@@ -41,9 +41,13 @@ HEAPSTER_DIR=$ANALYTICS_DIR/heapster
 
 export PATH=$PATH:/usr/local/go/bin:$DIR/bin
 export GOPATH=$DIR
+
 go get -u github.com/tools/godep
+
 mkdir -p $DIR/src/github.com/att-innovate/
 cd $DIR/src/github.com/att-innovate/
+rm -rf charmander-heapster
+
 git clone https://github.com/att-innovate/charmander-heapster.git
 cd charmander-heapster
 godep restore
