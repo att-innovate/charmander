@@ -23,6 +23,7 @@ ADD files/redis.conf redis.conf
 EXPOSE 6379
 
 ENV NODEVERSION v0.10.30
+ENV CMDVERSION 0.2.1
 RUN wget \
     --no-cookies \
     --progress=bar:force \
@@ -30,7 +31,7 @@ RUN wget \
     && tar -xvf node-$NODEVERSION-linux-x64.tar.gz \
     && mv node-$NODEVERSION-linux-x64 /opt/node \
     && cd /usr/local/bin && ln -s /opt/node/bin/* . \
-    && npm install -g redis-commander
+    && npm install -g redis-commander@$CMDVERSION
 
 EXPOSE 8081
 

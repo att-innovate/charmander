@@ -71,6 +71,9 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << "wget --progress=bar:force https://storage.googleapis.com/golang/go#{GO_PACKAGE_VERSION}.linux-amd64.tar.gz; "
       pkg_once_cmd << "tar -C /usr/local -xzf go#{GO_PACKAGE_VERSION}.linux-amd64.tar.gz; "
 
+      # Install Perf Tool
+      pkg_once_cmd << "apt-get -y install linux-tools-common linux-tools-generic linux-tools-`uname -r`; "
+
       # Update hosts file
       [ninfos[:master], ninfos[:slave]].flatten.each_with_index do |host, i|
         pkg_once_cmd << "echo '#{host[:ip]} #{host[:hostname]}' >> /etc/hosts; "
