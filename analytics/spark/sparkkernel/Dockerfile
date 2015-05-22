@@ -3,13 +3,7 @@ MAINTAINER Charmander
 
 # Install IPython3
 RUN apt-get -y install python3-pip libzmq-dev
-
-ENV IPYTHON_COMMIT f75fda4dee1b9ed5e734548180c2bdb6067a9ac8
-
-RUN git clone --recursive --single-branch https://github.com/ipython/ipython.git \
-    && cd ipython \
-    && git checkout $IPYTHON_COMMIT
-RUN cd ipython && pip3 install -e ".[notebook]"
+RUN pip3 install ipython[notebook]==3.0.0
 
 RUN mkdir /etc/service/ipython3notebook
 ADD files/ipython3notebook.sh /etc/service/ipython3notebook/run
