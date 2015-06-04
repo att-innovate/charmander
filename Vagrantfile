@@ -14,6 +14,7 @@ BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-c
 MESOS_PACKAGE_VERSION = "0.21.0-1.0.ubuntu1404"
 DOCKER_PACKAGE_VERSION = "1.4.1"
 GO_PACKAGE_VERSION = "1.3.3"
+PCP_PACKAGE_VERSION = "3.10.5-0~2919~ubuntu14.04.1"
 
 Vagrant.require_version ">= 1.7.1"
 
@@ -41,11 +42,12 @@ Vagrant.configure("2") do |config|
       end
 
       # Initialize command list for provisioning phase
-      # and add some additional keys/repository for Docker and Mesos
+      # and add some additional keys/repository for Docker, Mesos, and Performance CoPilot
       pkg_once_cmd  = 'apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9; '
       pkg_once_cmd << 'echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list; '
       pkg_once_cmd << 'apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF; DISTRO=$(lsb_release -is | tr "[:upper:]" "[:lower:]"); CODENAME=$(lsb_release -cs); '
       pkg_once_cmd << 'echo "deb http://repos.mesosphere.io/${DISTRO} ${CODENAME} main" | tee /etc/apt/sources.list.d/mesosphere.list; '
+      pkg_once_cmd << 'apt-add-repository ppa:simon-kjellberg/pcp-daily; '
       pkg_once_cmd << 'apt-get update; '
 
       # Initialize command list that gets run on every reboot
@@ -73,6 +75,10 @@ Vagrant.configure("2") do |config|
 
       # Install Perf Tool
       pkg_once_cmd << "apt-get -y install linux-tools-common linux-tools-generic linux-tools-`uname -r`; "
+
+      # Install Performance Copilot
+      pkg_once_cmd << "apt-get -y install pcp=#{PCP_PACKAGE_VERSION}  pcp-webapi=#{PCP_PACKAGE_VERSION}; "
+      pkg_once_cmd << "sed -i 's,PMCD_REQUEST_TIMEOUT=1,PMCD_REQUEST_TIMEOUT=10,' /etc/pcp/pmwebd/pmwebd.options; "
 
       # Update hosts file
       [ninfos[:master], ninfos[:slave]].flatten.each_with_index do |host, i|
