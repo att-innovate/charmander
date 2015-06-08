@@ -15,7 +15,7 @@ containerresolver
 cpufixed
 cpurandom
 charmander-heapster
-taskresolver
+tasknameresolver-api
 
 
 
