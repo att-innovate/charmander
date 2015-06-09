@@ -6,11 +6,6 @@
     "notmetered":   true,
     "volumes": [
         {
-            "host_path":"/tmp/mesos",
-            "container_path":"/containers/",
-            "mode":"ro"
-        },
-        {
             "host_path":"/var/run/docker.sock",
             "container_path":"/var/run/docker.sock",
             "mode":"ro"
