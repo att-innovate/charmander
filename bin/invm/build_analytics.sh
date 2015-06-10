@@ -37,6 +37,13 @@ cd $INFLUXDB_DIR &&
 	docker build -t $image_name .
 
 
+VECTOR_DIR=$ANALYTICS_DIR/vector
+cd $VECTOR_DIR &&
+    image_name="vector" &&
+	echo "Building $image_name" &&
+	docker build -t $image_name .
+
+
 HEAPSTER_DIR=$ANALYTICS_DIR/heapster
 
 export PATH=$PATH:/usr/local/go/bin:$DIR/bin
