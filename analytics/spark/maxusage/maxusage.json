@@ -2,7 +2,6 @@
     "id":          "maxusage",
     "dockerimage": "maxusage",
     "mem":         "400",
-    "cpus":        "0.5",
     "sla":         "singleton",
     "nodetype":    "analytics",
     "notmetered":  true
