@@ -108,8 +108,9 @@ Field-definitions:
     nodetype     Node-types can be either "analytics" (for analytics node) and "lab" (for lab nodes)
     notmetered   Defines if the metrics of a task gets metered/collected or not
     reshuffeable Defines if a task will be restarted by the "reshuffle" command. Typically set for simulators
-    ports        Port-mapping for the container. "host_port" and "container_port" used to define intern and external port
+    ports        Container-Port-mapping: "host_port" and "container_port" define intern and external port, in "bridge" mode only
     volumes      Volume-mapping for the container. "host_path", "container_path", and "mode" define the mapping of volumes
+    networkmode  Supported modes: "bridge", "host", and "none", see Docker documentation for further explanation
     arguments    Additional arguments that will get passed to the ENTRY_POINT of the docker image
 
 
