@@ -39,24 +39,47 @@ import (
 // Example request: http 172.31.2.12:31300/mesos-391b2b52-454c-49d4-aa9a-3a01f5d6e293
 //
 
-
-
 func handler(writer http.ResponseWriter, request *http.Request) {
 	containerId := html.EscapeString(request.URL.Path)
-	containerId = containerId[1:] //remove leading /
-	if strings.HasPrefix(containerId, "mesos-") {
-	    containerId = containerId[len("mesos-"):]
-	}
 
-    cmd := exec.Command("find", "/containers/", "-type", "d", "-name", containerId)
-    output, _ := cmd.CombinedOutput()
-    if len(output) == 0 { return }
+    if strings.Contains(containerId, "getid"){
 
-    line := string(output)
-    line = line[strings.Index(line, "executors/")+len("executors/"):]
-    line = line[:strings.Index(line, "/")]
+        writer.Header().Set("Access-Control-Allow-Origin", "*")
 
-    fmt.Fprintf(writer, "%s\n", line)
+        id := html.EscapeString(request.URL.Path)
+        id = id[1:] //remove leading /
+        var zz = strings.Split(id, "/")
+        fmt.Println("zz:",zz[1])
+        cmd := exec.Command("docker","inspect", zz[1])
+        output, _ := cmd.CombinedOutput()
+
+        if len(output) == 0 { return }
+
+        line := string(output)
+
+        var newline = strings.Split(line, "/tmp/mesos/slaves/")
+        var newline2 = strings.Split(newline[1],"/")
+
+        fmt.Fprintf(writer, "%s\n", newline2[4])
+
+    } else {
+
+        containerId = containerId[1:] //remove leading /
+        if strings.HasPrefix(containerId, "mesos-") {
+            containerId = containerId[len("mesos-"):]
+        }
+
+        cmd := exec.Command("find", "/containers/", "-type", "d", "-name", containerId)
+        output, _ := cmd.CombinedOutput()
+        if len(output) == 0 { return }
+
+        line = line[strings.Index(line, "executors/")+len("executors/"):]
+        line = line[:strings.Index(line, "/")]
+
+        fmt.Fprintf(writer, "%s\n", line)
+
+    }
+
 }
 
 func main() {
