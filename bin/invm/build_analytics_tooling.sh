@@ -13,11 +13,3 @@ cd $CONTAINERRESOLVER_DIR &&
     image_name="containerresolver" &&
 	echo "Building $image_name" &&
 	docker build -t $image_name .
-
-TASKRESOLVER_DIR=$ANALYTICS_DIR/taskresolver
-export GOPATH=$TASKRESOLVER_DIR
-cd $TASKRESOLVER_DIR &&
-    go build taskresolver.go
-    image_name="taskresolver" &&
-	echo "Building $image_name" &&
-	docker build -t $image_name .
