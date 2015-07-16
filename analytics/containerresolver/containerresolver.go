@@ -73,6 +73,7 @@ func handler(writer http.ResponseWriter, request *http.Request) {
         output, _ := cmd.CombinedOutput()
         if len(output) == 0 { return }
 
+        line := string(output)
         line = line[strings.Index(line, "executors/")+len("executors/"):]
         line = line[:strings.Index(line, "/")]
 

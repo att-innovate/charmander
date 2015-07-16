@@ -35,38 +35,3 @@ cd $INFLUXDB_DIR &&
     image_name="influxdb" &&
 	echo "Building $image_name" &&
 	docker build -t $image_name .
-
-
-VECTOR_DIR=$ANALYTICS_DIR/vector
-cd $VECTOR_DIR &&
-    image_name="vector" &&
-	echo "Building $image_name" &&
-	docker build -t $image_name .
-
-
-HEAPSTER_DIR=$ANALYTICS_DIR/heapster
-
-export PATH=$PATH:/usr/local/go/bin:$DIR/bin
-export GOPATH=$DIR
-
-go get -u github.com/tools/godep
-
-mkdir -p $DIR/src/github.com/att-innovate/
-cd $DIR/src/github.com/att-innovate/
-rm -rf charmander-heapster
-
-git clone https://github.com/att-innovate/charmander-heapster.git
-cd charmander-heapster
-godep restore
-go install -a github.com/att-innovate/charmander-heapster
-cp $DIR/bin/charmander-heapster $HEAPSTER_DIR
-cd $HEAPSTER_DIR &&
-    image_name="heapster" &&
-	echo "Building $image_name" &&
-	docker build -t $image_name .
-
-
-
-
-
-

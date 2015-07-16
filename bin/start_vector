@@ -1,3 +1,4 @@
 #!/bin/bash
 
-curl -s -X POST -T analytics/vector/vector.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task
+curl -s -X POST -T vector/vector/vector.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task
+curl -s -X POST -T vector/datacollector/datacollector.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task

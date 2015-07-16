@@ -1,0 +1,8 @@
+{
+    "id":          "datacollector",
+    "dockerimage": "datacollector",
+    "mem":         "50",
+    "sla":         "singleton",
+    "nodetype":    "analytics",
+    "notmetered":  true
+}

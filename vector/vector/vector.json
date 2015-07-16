@@ -1,0 +1,15 @@
+{
+    "id":          "vector",
+    "dockerimage": "vector",
+    "mem":         "50",
+    "sla":         "singleton",
+    "nodetype":    "analytics",
+    "notmetered":  true,
+    "ports": [
+        {
+            "host_port":"31790",
+            "container_port":"10000"
+        }
+    ]
+
+}

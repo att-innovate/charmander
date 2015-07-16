@@ -2,5 +2,4 @@
 
 curl -s -X POST -T analytics/redis/redis.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task
 curl -s -X POST -T analytics/influxdb/influxdb.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task
-curl -s -X POST -T analytics/heapster/heapster.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task
 curl -s -X POST -T analytics/containerresolver/containerresolver.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task

@@ -19,11 +19,39 @@ Lets build it.
 
 This command builds max-usage and creates a corresponding Docker image. This command will take some time to finish the first time you run it.
 
+#### Build cAdvisor or Vector
+You can use either cAdvisor and heapster or use Vector and PCP for for data collection
 
-#### Start cAdvisor and Analytics-Stack
+cAdvisor uses a stripped down version of [Heapster](https://github.com/att-innovate/charmander-heapster) to collect metrics from all the lab-nodes and to store those metrics to InfluxDB
+
+To build cAdvisor & Heapster
+
+    ./bin/build_cadvisor
+
+Vector uses a modifed version of [Netflix Vector](https://github.com/att-innovate/charmander-heapster) to display the data and [Datacollector](https://github.com/att-innovate/charmander-datacollector) to collect metrics from all the lab-nodes and to store those metrics to InfluxDB
+
+To build Vector & Datacollector
+
+    ./bin/build_vector
+
+
+#### Start Analytics-Stack
+    
+    ./bin/start_analytics
+
+    Make sure to start analytics before cAdvisor or Vector
+
+
+#### Start cAdvisor or Vector
+
+To start cAdvisor
 
     ./bin/start_cadvisor
-    ./bin/start_analytics
+
+To start Vector
+
+    ./bin/start_vector
+
 
 #### Start two instances of the lookbusy simulator
 

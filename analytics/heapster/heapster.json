@@ -1,9 +1,0 @@
-{
-    "id":          "heapster",
-    "dockerimage": "heapster",
-    "mem":         "50",
-    "sla":         "singleton",
-    "nodetype":    "analytics",
-    "notmetered":  true
-
-}
