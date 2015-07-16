@@ -17,9 +17,9 @@ Clone, compile and start up Scheduler. The compilation of the code happens behin
 Verify that Charmander shows up under Frameworks in the Mesos Management Console: [http://172.31.1.11:5050](http://172.31.1.11:5050)
 
 
-#### Next build and deploy Load-Simulators
+#### Next build and deploy Analytics Stack
 
-[Load-Simulators](https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATOR.md)
+[Analytics-Stack](https://github.com/att-innovate/charmander/blob/master/docs/SETUPANALYTICS.md)
 
 
 #### Reset Scheduler/Cluster

@@ -1,5 +1,7 @@
-Spark Analytics - Build your own Experiment
--------------------------------------------
+Spark Analytics
+---------------
+
+Note: This document is under construction!
 
 #### Data-Source
 All the collected data of your _metered_ simulators/tasks is available in **InfluxDB** via the [InfluxDB-API](http://influxdb.com/docs/v0.7/api/reading_and_writing_data.html).
@@ -109,41 +111,6 @@ Retrieve 200 data-points as RDD and print them out using the Spark-shell
     import org.att.charmander.CharmanderUtils
     val datapoints= CharmanderUtils.getRDDForTask(sc, "lookbusy80", "memory_usage", 200)
     datapoints.foreach(println)
-
-
-#### Spark-Kernel - experimental!
-
-IBM recently open-sourced their [Spark-Kernel](https://github.com/ibm-et/spark-kernel) project.
-It allows you to run the Spark-Shell as a _Notebook_ in jupyter (previously known as iPython).
-
-Charmander includes scripts to build and run a Spark-Kernel docker image.
-
-Lets build the Docker image. Be warned, the first time you run it that build takes a loooooooong type to complete.
-
-    ./bin/reset_cluster
-    ./bin/build_sparkkernel
-
-Run Spark-Kernel with Charmander
-
-    ./bin/start_cadvisor
-    ./bin/start_analytics
-    ./bin/start_lookbusy80mb
-    ./bin/start_sparkkernel
-
-Open Spark-Kernel/jupyter at [172.31.2.11:31800/](http://172.31.2.11:31800/)
-
-Open the _CharmanderUtils.ipynb_ notebook and wait until the Spark Kernel is ready, indicated in the header by the dot
-changing in to a circle, that takes roughly 10s, and you should see something like this:
-
-![image](https://github.com/att-innovate/charmander/blob/master/docs/assets/SparkKernel.png?raw=true)
-
-You can now execute all the _cells_ using menu _Cell/Run All_ .. Have fun!
-
-
-
-#### Next learn about the Scheduler API
-
-[Scheduler API](https://github.com/att-innovate/charmander/blob/master/docs/SCHEDULERAPI.md)
 
 
 

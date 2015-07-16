@@ -1,3 +1,0 @@
-#!/bin/bash
-
-curl -s -X POST -T loadsimulator/lookbusy/lookbusy200mb.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task

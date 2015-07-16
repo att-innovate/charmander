@@ -12,8 +12,8 @@ local `/etc/hosts` file:
 
 **Build Issues**
 
-There are those random times when you see `tar: Unexpected EOF in archive` errors while building an image. No problem,
-just run the build script again.
+There are those random times when you see `tar: Unexpected EOF in archive` errors or some other funny error while building an image.
+No problem, just run the build script again.
 
 **Reset Scheduler**
 

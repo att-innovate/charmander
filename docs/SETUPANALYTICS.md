@@ -15,5 +15,5 @@ Build Docker images for our Analytics stack (InfluxDB, Redis, container-resolver
 
 #### Next run a simple Experiment
 
-[Experiment](https://github.com/att-innovate/charmander/blob/master/docs/RUNEXPERIMENT.md)
+[Maxusage](https://github.com/att-innovate/charmander-experiment-maxusage)
 

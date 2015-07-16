@@ -37,33 +37,24 @@ the host itself.
     - Compile it inside the master node
     - Deploy and run it
 
-3. [Build and deploy Load-Simulators][7]
-
-    - Build the Docker images for the different load-simulators on all the lab nodes
-
-4. [Build and deploy Analytics Stack][8]
+3. [Build and deploy Analytics Stack][8]
 
     - Build all the Docker images for the full analytics stack on the analytics node
 
-5. [Build and run a simple Experiment, _maxusage_][9]
+4. Run some Experiments
 
-    - Build and run a simple experiment that changes the resource allocation based on insights from previous runs
+    - [Maxusage][9]
+    - [Sparkkernel][10]
 
-6. [Spark Analytics - Build your own Experiment][10]
-
-    - What are the extension point to build your own Experiment
-    - How to run and use Spark with Charmander
-    - How to build and use iPython and [Spark-Kernel][11], _experimental_!
-
-7. [Scheduler API][12]
+5. [Scheduler API][12]
 
     - List of all the different Scheduler REST APIs
 
-8. [Script Reference][13]
+6. [Script Reference][13]
 
     - List of all the include scripts/tools
 
-9. [Tips and Tricks][14]
+7. [Tips and Tricks][14]
 
     - Some tips and tricks for common issues
 
@@ -109,8 +100,8 @@ some additional open source projects and a blog post that have inspired us:
 [6]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSCHEDULER.md
 [7]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPSIMULATOR.md
 [8]: https://github.com/att-innovate/charmander/blob/master/docs/SETUPANALYTICS.md
-[9]: https://github.com/att-innovate/charmander/blob/master/docs/RUNEXPERIMENT.md
-[10]: https://github.com/att-innovate/charmander/blob/master/docs/SPARKANALYTICS.md
+[9]: https://github.com/att-innovate/charmander-experiment-maxusage
+[10]: https://github.com/att-innovate/charmander-experiment-sparkkernel
 [11]: https://github.com/ibm-et/spark-kernel
 [12]: https://github.com/att-innovate/charmander/blob/master/docs/SCHEDULERAPI.md
 [13]: https://github.com/att-innovate/charmander/blob/master/docs/SCRIPTS.md

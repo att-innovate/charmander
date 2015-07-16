@@ -1,7 +1,0 @@
-{
-    "id": "cpurandom",
-    "dockerimage": "cpurandom",
-    "mem": "20",
-    "reshuffleable": true,
-    "nodetype": "lab"
-}

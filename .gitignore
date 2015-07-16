@@ -15,7 +15,10 @@ containerresolver
 cpufixed
 cpurandom
 charmander-heapster
-tasknameresolver-api
 
+# ignore experiments
+/experiments/maxusage/
+/experiments/sparkkernel/
+/experiments/dns/
 
 

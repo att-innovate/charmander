@@ -1,8 +1,0 @@
-{
-    "id": "lookbusy200",
-    "dockerimage": "lookbusy",
-    "mem": "300",
-    "reshuffleable": true,
-    "nodetype": "lab",
-    "arguments": ["-m 200MB", "-n 0"]
-}

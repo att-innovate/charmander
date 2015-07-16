@@ -1,9 +1,0 @@
-{
-    "id":          "maxusage",
-    "dockerimage": "maxusage",
-    "mem":         "400",
-    "sla":         "singleton",
-    "nodetype":    "analytics",
-    "notmetered":  true
-
-}
