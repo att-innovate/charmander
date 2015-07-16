@@ -63,25 +63,21 @@ the host itself.
 #### The different Charmander projects on GitHub
 
 
-1. [github.com/att-innovate/charmander][1]
-
-    The main project, this project, it contains all the scripts to set up the lab.
+[github.com/att-innovate/charmander][1]: The main project, this project, it contains all the scripts to set up the lab.
 
 
-2. [github.com/att-innovate/charmander-scheduler][2]
-
-    Charmander Scheduler is our Framework for Mesos.
+[github.com/att-innovate/charmander-scheduler][2]: Charmander Scheduler is our Framework for Mesos.
 
 
-3. [github.com/att-innovate/charmander-heapster][3]
-
-    A slimmed-down version of Google's Heapster project.
+[github.com/att-innovate/charmander-heapster][3]: A slimmed-down version of Google's Heapster project.
 
 
-4. [github.com/att-innovate/charmander-spark][4]
+[github.com/att-innovate/charmander-spark][4]: This project contains Charmander-specific helper functions for Spark.
 
-    This project contains Charmander-specific helper functions for Spark.
+[github.com/att-innovate/charmander-experiment-maxusage][9]: The MaxUsage-Experiment analyzes the actual memory usage of a running simulators
+and uses that result to overwrite the memory-allocation for subsequent run-requests for the same simulators.
 
+[github.com/att-innovate/charmander-experiment-sparkkernel][10]: The SparkKernel-Experiment is using SparkKernel to calculate max-memory usage.
 
 
 #### Additional thanks goes to
@@ -110,3 +106,4 @@ some additional open source projects and a blog post that have inspired us:
 [16]: https://github.com/mesos/mesos-go
 [17]: http://blog.relateiq.com/a-docker-dev-environment-in-24-hours-part-2-of-2/
 [18]: http://web.stanford.edu/group/mast/cgi-bin/drupal/content/quasar-resource-efficient-and-qos-aware-cluster-management
+
