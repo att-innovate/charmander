@@ -12,13 +12,11 @@ node_slaves.txt
 
 # binaries
 containerresolver
-cpufixed
-cpurandom
 charmander-heapster
 
 # ignore experiments
 /experiments/maxusage/
 /experiments/sparkkernel/
-/experiments/dns/
+/experiments/nessy/
 
 
