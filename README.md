@@ -67,27 +67,27 @@ Btw, if at any time during installation you run in to an error, please follow th
 
 - [github.com/att-innovate/charmander][1]
 
-	The main project, this project, it contains all the scripts to set up the lab.
+    The main project, this project, it contains all the scripts to set up the lab.
 
 - [github.com/att-innovate/charmander-scheduler][2]
 
-	Charmander Scheduler is our Framework for Mesos.
+    Charmander Scheduler is our Framework for Mesos.
 
 - [github.com/att-innovate/charmander-heapster][3]
 
-	A slimmed-down version of Google's Heapster project.
+    A slimmed-down version of Google's Heapster project.
 
 - [github.com/att-innovate/charmander-spark][4]
 
-	This project contains Charmander-specific helper functions for Spark.
+    This project contains Charmander-specific helper functions for Spark.
 
 - [github.com/att-innovate/charmander-experiment-maxusage][9]
 
-	The MaxUsage-Experiment analyzes the actual memory usage of a running simulators and uses that result to overwrite the memory-allocation for subsequent run-requests for the same simulators.
+    The MaxUsage-Experiment analyzes the actual memory usage of a running simulators and uses that result to overwrite the memory-allocation for subsequent run-requests for the same simulators.
 
 - [github.com/att-innovate/charmander-experiment-sparkkernel][10]
 
-	The SparkKernel-Experiment is using SparkKernel to calculate max-memory usage.
+    The SparkKernel-Experiment is using SparkKernel to calculate max-memory usage.
 
 
 #### Additional thanks goes to
