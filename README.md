@@ -26,6 +26,8 @@ All the steps are automated and are part of simple scripts that come with the Ch
 software needed during the setup gets installed and built inside the VMs, nothing additionally gets installed on
 the host itself.
 
+Btw, if at any time during installation you run in to an error, please follow the steps outlined in [Tips and Tricks][14]
+
 1. [Setup Nodes][5]
 
     - Configure and build the different nodes with Vagrant and VirtualBox
