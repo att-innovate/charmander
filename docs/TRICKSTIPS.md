@@ -10,7 +10,12 @@ local `/etc/hosts` file:
     172.31.2.12     slave2   #mesosenv
     172.31.2.13     slave3   #mesosenv
 
-**Build Issues**
+**Build Issues with Vagrantfile**
+
+There are those rare times when `vagrant up` fails. In those situations we suggest to do a clean `vagrant destroy` and `vagrant up` cycle.
+This will get the system in to a consistent state again.
+
+**Build Issues with ./bin/build.. scripts**
 
 There are those random times when you see `tar: Unexpected EOF in archive` errors or some other funny error while building an image.
 No problem, just run the build script again.
