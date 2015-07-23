@@ -14,7 +14,6 @@ BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-c
 MESOS_PACKAGE_VERSION = "0.21.0-1.0.ubuntu1404"
 DOCKER_PACKAGE_VERSION = "1.4.1"
 GO_PACKAGE_VERSION = "1.3.3"
-PCP_PACKAGE_VERSION = "3.10.6-0~3031~ubuntu14.04.1"
 
 Vagrant.require_version ">= 1.7.1"
 
@@ -77,7 +76,7 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << "apt-get -y install linux-tools-common linux-tools-generic linux-tools-`uname -r`; "
 
       # Install Performance Copilot
-      pkg_once_cmd << "apt-get -y install pcp=#{PCP_PACKAGE_VERSION}  pcp-webapi=#{PCP_PACKAGE_VERSION}; "
+      pkg_once_cmd << "apt-get -y install pcp pcp-webapi; "
       pkg_once_cmd << "sed -i 's,PMCD_REQUEST_TIMEOUT=1,PMCD_REQUEST_TIMEOUT=10,' /etc/pcp/pmwebd/pmwebd.options; "
 
       # Update hosts file
