@@ -13,6 +13,7 @@ node_slaves.txt
 # binaries
 containerresolver
 charmander-heapster
+charmander-datacollector
 
 # ignore experiments
 /experiments/maxusage/
