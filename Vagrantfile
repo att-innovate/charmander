@@ -33,6 +33,7 @@ Vagrant.configure("2") do |config|
         override.vm.network :private_network, :ip => ninfo[:ip]
 
         vb.name = 'charmander-' + ninfo[:hostname]
+        vb.gui = false
         if ninfo[:hostname] == ninfos[:analytics][:node] then
           vb.customize ["modifyvm", :id, "--memory", ninfos[:analytics][:mem], "--cpus", ninfos[:analytics][:cpus]]
         else
@@ -61,9 +62,9 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << "sed -i 's,GRUB_CMDLINE_LINUX=\"\",GRUB_CMDLINE_LINUX=\"cgroup_enable=memory swapaccount=1\",' /etc/default/grub; "
       pkg_once_cmd << 'update-grub; '
 
-      pkg_once_cmd << 'docker pull phusion/baseimage:0.9.16; '
+      pkg_once_cmd << 'docker pull phusion/baseimage:0.9.17; '
       pkg_once_cmd << 'docker pull busybox:ubuntu-14.04; '
-      pkg_once_cmd << 'docker pull google/cadvisor:0.8.0; '
+      pkg_once_cmd << 'docker pull google/cadvisor:0.10.1; '
 
       # at bootup always remove old containers
       pkg_always_cmd << 'docker ps -a | grep \'Exit\' | awk \'{print $1}\' | xargs -r docker rm; '
@@ -74,6 +75,9 @@ Vagrant.configure("2") do |config|
 
       # Install Perf Tool
       pkg_once_cmd << "apt-get -y install linux-tools-common linux-tools-generic linux-tools-`uname -r`; "
+
+      # Install Top Tools
+      pkg_once_cmd << "apt-get -y install iftop htop; "
 
       # Install Performance Copilot
       pkg_once_cmd << "apt-get -y install pcp pcp-webapi; "
