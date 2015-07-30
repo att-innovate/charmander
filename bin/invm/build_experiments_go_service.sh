@@ -23,5 +23,5 @@ cp -r /vagrant/experiments/$EXPERIMENT_NAME/services/$SERVICE_NAME/* $SERVICE_SR
 go get github.com/charmander/$EXPERIMENT_NAME/$SERVICE_NAME
 go install github.com/charmander/$EXPERIMENT_NAME/$SERVICE_NAME
 
-rm /vagrant/experiments/$EXPERIMENT_NAME/services/$SERVICE_NAME/$SERVICE_NAME
+rm -rf /vagrant/experiments/$EXPERIMENT_NAME/services/$SERVICE_NAME/$SERVICE_NAME
 cp $GOPATH/bin/$SERVICE_NAME /vagrant/experiments/$EXPERIMENT_NAME/services/$SERVICE_NAME/
