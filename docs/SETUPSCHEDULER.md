@@ -14,7 +14,7 @@ Clone, compile and start up Scheduler. The compilation of the code happens behin
 
     ./bin/deploy_scheduler
 
-Verify that Charmander shows up under Frameworks in the Mesos Management Console: [http://172.31.1.11:5050](http://172.31.1.11:5050)
+Verify that Charmander shows up under Frameworks in the Mesos Management Console: [http://172.31.1.11:5050](http://172.31.1.11:5050). It could take a minute.
 
 
 #### Next build and deploy Analytics Stack

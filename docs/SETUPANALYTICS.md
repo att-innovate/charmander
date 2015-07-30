@@ -1,7 +1,7 @@
 Build and deploy Analytics Stack
 --------------------------------
 
-Charmander uses different open-source tools as its Analytics-Stack:
+Charmander uses different open-source tools as basis for its Analytics-Stack:
 
 - [InfluxDB](http://influxdb.com) as central store for all the collected timeseries
 - [Redis](http://redis.io) as Task-Insights database to share information about tasks and nodes between Analytics-Stack, Spark, and Charmander-Scheduler
