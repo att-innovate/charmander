@@ -36,6 +36,8 @@ Vagrant.configure("2") do |config|
         vb.gui = false
         if ninfo[:hostname] == ninfos[:analytics][:node] then
           vb.customize ["modifyvm", :id, "--memory", ninfos[:analytics][:mem], "--cpus", ninfos[:analytics][:cpus]]
+        elsif ninfo[:hostname] == ninfos[:traffic][:node] then
+            vb.customize ["modifyvm", :id, "--memory", ninfos[:traffic][:mem], "--cpus", ninfos[:traffic][:cpus]]
         else
           vb.customize ["modifyvm", :id, "--memory", ninfo[:mem], "--cpus", ninfo[:cpus] ]
         end
@@ -107,7 +109,13 @@ Vagrant.configure("2") do |config|
         pkg_once_cmd << 'rm /vagrant/node_*.txt; '
 
       elsif slave?(ninfo[:hostname]) then
-        nodetype = ninfo[:hostname] == ninfos[:analytics][:node] ? 'analytics' : 'lab'
+        if ninfo[:hostname] == ninfos[:analytics][:node] then
+          nodetype = 'analytics'
+        elsif ninfo[:hostname] == ninfos[:traffic][:node] then
+          nodetype = 'traffic'
+        else
+          nodetype = 'lab'
+        end
         pkg_once_cmd << "apt-get -y install mesos=#{MESOS_PACKAGE_VERSION}; "
         pkg_once_cmd << 'mkdir -p /etc/mesos-slave; '
         pkg_once_cmd << 'echo docker,mesos | dd of=/etc/mesos-slave/containerizers; '
@@ -122,6 +130,8 @@ Vagrant.configure("2") do |config|
         pkg_once_cmd << "echo #{ninfo[:hostname]} >> /vagrant/node_slaves.txt; "
         if ninfo[:hostname] == ninfos[:analytics][:node] then
           pkg_once_cmd << "echo #{ninfo[:hostname]} >> /vagrant/node_analytics.txt; "
+        elsif ninfo[:hostname] == ninfos[:traffic][:node] then
+            pkg_once_cmd << "echo #{ninfo[:hostname]} >> /vagrant/node_traffic.txt; "
         else
           pkg_once_cmd << "echo #{ninfo[:hostname]} >> /vagrant/node_lab.txt; "
         end

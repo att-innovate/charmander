@@ -1,13 +1,20 @@
 # Mesos cluster configurations
 
-# The numbers of servers
-##############################
-slave_n  : 3      # hostname will be slave1,slave2,…
+# The numbers of slaves,
+# includes node for analytics and optional traffic generator
+# hostname will be slave1,slave2,…
+############################################################
+slave_n : 3
 
 # Name of slave-node assigned to do analytics
 # All other slave nodes become "lab-nodes"
 ################################################
 analytics_node : "slave1"
+
+# Name of slave-node assigned to do traffic generators
+# If left empty no traffic node gets set
+################################################
+traffic_node : ""
 
 # Memory and Cpu settings
 ##########################################
@@ -17,6 +24,8 @@ analytics_mem  : 2048
 analytics_cpus : 3
 slave_mem      : 1024
 slave_cpus     : 2
+traffic_mem    : 384
+traffic_cpus   : 1
 
 # Private ip bases, don't change
 ################################################

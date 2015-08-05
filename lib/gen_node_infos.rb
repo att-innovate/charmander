@@ -40,6 +40,15 @@ def gen_node_infos(cluster_yml)
     :cpus => analytics_cpus
   }
 
+  traffic_node = cluster_yml['traffic_node']
+  traffic_mem = cluster_yml['traffic_mem']
+  traffic_cpus = cluster_yml['traffic_cpus']
 
-  return { :master => master_infos, :slave=>slave_infos, :analytics=>analytics_info }
+  traffic_info = {
+      :node => traffic_node,
+      :mem => traffic_mem,
+      :cpus => traffic_cpus
+  }
+
+  return { :master => master_infos, :slave=>slave_infos, :analytics=>analytics_info, :traffic=>traffic_info }
 end
