@@ -5,10 +5,11 @@
 To access slave specific information thru the Mesos Web-UI we suggest that you add the ip addresses of our cluster nodes to your
 local `/etc/hosts` file:
 
-    172.31.1.11     master1  #mesosenv
-    172.31.2.11     slave1   #mesosenv
-    172.31.2.12     slave2   #mesosenv
-    172.31.2.13     slave3   #mesosenv
+    172.31.1.11     master1  #charmander
+    172.31.2.11     slave1   #charmander
+    172.31.2.12     slave2   #charmander
+    172.31.2.13     slave3   #charmander
+    172.31.2.14     slave4   #charmander
 
 **Build Issues with Vagrantfile**
 

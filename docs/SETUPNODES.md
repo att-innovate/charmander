@@ -51,7 +51,7 @@ become lab nodes. The default configuration is defined in `cluster.yml`.
     master_mem     : 384
     master_cpus    : 1
     analytics_mem  : 2048
-    analytics_cpus : 2
+    analytics_cpus : 3
     slave_mem      : 1024
     slave_cpus     : 2
 
