@@ -8,9 +8,12 @@ RUN sudo npm install http-server -g
 
 RUN git clone https://github.com/att-innovate/charmander-vector.git && \
 	cd charmander-vector && \
-	git checkout 6274caf08119867bbfed97ef9fe049c79e5b4b12
+	git checkout 59f626927fb9dfe95955384d853afd656b62ccf2
 
-RUN cd charmander-vector && \
+RUN git clone https://github.com/att-innovate/charmander-vector-extensions.git
+
+RUN cp $(pwd)/charmander-vector-extensions/containerResolver.js $(pwd)/charmander-vector/src/app &&\
+	cd charmander-vector && \
 	bower --allow-root install --config.interactive=false && \
 	npm install && \
 	npm install --global gulp && \
