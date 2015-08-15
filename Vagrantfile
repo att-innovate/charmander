@@ -135,6 +135,11 @@ Vagrant.configure("2") do |config|
         else
           pkg_once_cmd << "echo #{ninfo[:hostname]} >> /vagrant/node_lab.txt; "
         end
+
+        # increase conntrack size to prevent the traffic-generators to be shut down by os
+        if ninfo[:hostname] == ninfos[:traffic][:node] then
+          pkg_always_cmd << 'sysctl -w net.netfilter.nf_conntrack_max=131072; '
+        end
       end
 
       # end of command list
