@@ -8,7 +8,7 @@ RUN sudo npm install http-server -g
 
 RUN git clone https://github.com/att-innovate/charmander-vector.git && \
 	cd charmander-vector && \
-	git checkout a40a52eb0140ac740c07ef465a340a98aaf615f6
+	git checkout 2c72f4cacf6b60a8fb07cb3ff15965ab0063f78a
 
 RUN git clone https://github.com/att-innovate/charmander-vector-extensions.git
 
