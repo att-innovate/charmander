@@ -13,7 +13,7 @@ BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-c
 
 MESOS_PACKAGE_VERSION = "0.21.0-1.0.ubuntu1404"
 DOCKER_PACKAGE_VERSION = "1.4.1"
-GO_PACKAGE_VERSION = "1.3.3"
+GO_PACKAGE_VERSION = "1.5.1"
 
 Vagrant.require_version ">= 1.7.1"
 
