@@ -48,9 +48,9 @@ func handler(writer http.ResponseWriter, request *http.Request) {
 
         id := html.EscapeString(request.URL.Path)
         id = id[1:] //remove leading /
-        var zz = strings.Split(id, "/")
-        fmt.Println("zz:",zz[1])
-        cmd := exec.Command("docker","inspect", zz[1])
+        var elmts = strings.Split(id, "/")
+
+        cmd := exec.Command("docker","inspect", elmts[1])
         output, _ := cmd.CombinedOutput()
 
         if len(output) == 0 { return }
@@ -67,6 +67,7 @@ func handler(writer http.ResponseWriter, request *http.Request) {
         containerId = containerId[1:] //remove leading /
         if strings.HasPrefix(containerId, "mesos-") {
             containerId = containerId[len("mesos-"):]
+            containerId = containerId[strings.Index(containerId, ".")+1:]
         }
 
         cmd := exec.Command("find", "/containers/", "-type", "d", "-name", containerId)

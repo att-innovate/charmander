@@ -11,9 +11,17 @@ ninfos = gen_node_infos(conf)
 BOX_NAME = "ubuntu-dev-trusty"
 BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
-MESOS_PACKAGE_VERSION = "0.21.0-1.0.ubuntu1404"
-DOCKER_PACKAGE_VERSION = "1.4.1"
-GO_PACKAGE_VERSION = "1.5.1"
+# Platform Package Versiona
+MESOS_PACKAGE_VERSION = '0.23.0-1.0.ubuntu1404'
+DOCKER_PACKAGE_VERSION = '1.7.1'
+GO_PACKAGE_VERSION = '1.5.1'
+
+# Docker Image Versiona
+PHUSION_IMAGE_VERSION = '0.9.17'
+BUSY_BOX_IMAGE_VERSION = 'ubuntu-14.04'
+CADVISOR_IMAGE_VERSION = '0.18.0'
+
+
 
 Vagrant.require_version ">= 1.7.1"
 
@@ -34,6 +42,9 @@ Vagrant.configure("2") do |config|
 
         vb.name = 'charmander-' + ninfo[:hostname]
         vb.gui = false
+        vb.customize ["modifyvm", :id, "--nictype1", "Am79C973"]
+        vb.customize ["modifyvm", :id, "--nictype2", "Am79C973"]
+        
         if ninfo[:hostname] == ninfos[:analytics][:node] then
           vb.customize ["modifyvm", :id, "--memory", ninfos[:analytics][:mem], "--cpus", ninfos[:analytics][:cpus]]
         elsif ninfo[:hostname] == ninfos[:traffic][:node] then
@@ -64,9 +75,9 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << "sed -i 's,GRUB_CMDLINE_LINUX=\"\",GRUB_CMDLINE_LINUX=\"cgroup_enable=memory swapaccount=1\",' /etc/default/grub; "
       pkg_once_cmd << 'update-grub; '
 
-      pkg_once_cmd << 'docker pull phusion/baseimage:0.9.17; '
-      pkg_once_cmd << 'docker pull busybox:ubuntu-14.04; '
-      pkg_once_cmd << 'docker pull google/cadvisor:0.10.1; '
+      pkg_once_cmd << "docker pull phusion/baseimage:#{PHUSION_IMAGE_VERSION}; "
+      pkg_once_cmd << "docker pull busybox:#{BUSY_BOX_IMAGE_VERSION}; "
+      pkg_once_cmd << "docker pull google/cadvisor:#{CADVISOR_IMAGE_VERSION}; "
 
       # at bootup always remove old containers
       pkg_always_cmd << 'docker ps -a | grep \'Exit\' | awk \'{print $1}\' | xargs -r docker rm; '
