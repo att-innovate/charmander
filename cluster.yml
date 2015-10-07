@@ -4,7 +4,7 @@
 # includes node for analytics and optional traffic generator
 # hostname will be slave1,slave2,…
 ############################################################
-slave_n : 4
+slave_n : 3
 
 # Name of slave-node assigned to do analytics
 # All other slave nodes become "lab-nodes"
@@ -14,7 +14,7 @@ analytics_node : "slave1"
 # Name of slave-node assigned to do traffic generators
 # If left empty no traffic node gets set
 ################################################
-traffic_node : "slave4"
+traffic_node : ""
 
 # Memory and Cpu settings
 ##########################################
