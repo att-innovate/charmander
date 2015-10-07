@@ -4,11 +4,13 @@
 .idea
 project
 target
+.vscode
 
 # generated node-list files
 node_analytics.txt
 node_lab.txt
 node_slaves.txt
+note_traffic.txt
 
 # binaries
 containerresolver
