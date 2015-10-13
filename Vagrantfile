@@ -12,7 +12,7 @@ BOX_NAME = "ubuntu-dev-trusty"
 BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
 # Platform Package Versiona
-MESOS_PACKAGE_VERSION = '0.23.0-1.0.ubuntu1404'
+MESOS_PACKAGE_VERSION = '0.24.1-0.2.35.ubuntu1404'
 DOCKER_PACKAGE_VERSION = '1.7.1'
 GO_PACKAGE_VERSION = '1.5.1'
 
@@ -28,7 +28,7 @@ Vagrant.require_version ">= 1.7.1"
 Vagrant.configure("2") do |config|
   config.vm.box = BOX_NAME
   config.vm.box_url = BOX_URI
-
+  
   if Vagrant.has_plugin?('vagrant-cachier')
     config.cache.scope = :box
   end
@@ -61,12 +61,12 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << 'apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF; DISTRO=$(lsb_release -is | tr "[:upper:]" "[:lower:]"); CODENAME=$(lsb_release -cs); '
       pkg_once_cmd << 'echo "deb http://repos.mesosphere.io/${DISTRO} ${CODENAME} main" | tee /etc/apt/sources.list.d/mesosphere.list; '
       pkg_once_cmd << 'apt-add-repository ppa:simon-kjellberg/pcp-daily; '
-      pkg_once_cmd << 'apt-get update; '
+      pkg_once_cmd << 'export DEBIAN_FRONTEND=noninteractive; apt-get update; '
 
       # Initialize command list that gets run on every reboot
       # and we won't stop if some of the commands fail
       pkg_always_cmd = 'echo "Running init script"; set +e; '
-
+      
       # install aufs driver for docker to prevent race condition issue with devicemapper
       pkg_once_cmd << 'apt-get install -y linux-image-extra-$(uname -r) aufs-tools; '
 
@@ -81,7 +81,7 @@ Vagrant.configure("2") do |config|
 
       # at bootup always remove old containers
       pkg_always_cmd << 'docker ps -a | grep \'Exit\' | awk \'{print $1}\' | xargs -r docker rm; '
-
+      
       # Install go
       pkg_once_cmd << "wget --progress=bar:force https://storage.googleapis.com/golang/go#{GO_PACKAGE_VERSION}.linux-amd64.tar.gz; "
       pkg_once_cmd << "tar -C /usr/local -xzf go#{GO_PACKAGE_VERSION}.linux-amd64.tar.gz; "
