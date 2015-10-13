@@ -8,8 +8,8 @@ ENV REDISVERSION 2.8.11
 RUN wget \
     --no-cookies \
     --progress=bar:force \
-    http://download.redis.io/releases/redis-$REDISVERSION.tar.gz \
-    && tar xzf redis-$REDISVERSION.tar.gz \
+    https://github.com/antirez/redis/archive/$REDISVERSION.tar.gz \
+    && tar xzf $REDISVERSION.tar.gz \
     && cd redis-$REDISVERSION \
     && make \
     && cd .. \
