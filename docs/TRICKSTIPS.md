@@ -34,6 +34,7 @@ to this scheduler/framework.
 
 The whole cluster-setup can easily be rebooted into a clean state:
 
+    ./bin/reset_cluster
     vagrant reload
 
 **Shutdown Cluster**
