@@ -8,7 +8,7 @@ RUN sudo npm install http-server -g
 
 RUN git clone https://github.com/att-innovate/charmander-vector.git && \
 	cd charmander-vector && \
-	git checkout f49ecb334b46c86347db919fbc21367b4f07d48b
+	git checkout 4e2d64ca2ae04c72b90e8544cc9db1ae4c03c91d
 
 RUN cd charmander-vector && \
 	bower --allow-root install --config.interactive=false && \
