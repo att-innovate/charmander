@@ -1,0 +1,4 @@
+#!/bin/bash
+
+curl -s -X POST -T pcp/pcp-all.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task
+curl -s -X POST -T peekachu/peekachu.json -H "Accept: application/json" -H "Content-Type: application/json" 172.31.1.11:7075/client/task

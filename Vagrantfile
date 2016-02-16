@@ -60,7 +60,7 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << 'echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list; '
       pkg_once_cmd << 'apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF; DISTRO=$(lsb_release -is | tr "[:upper:]" "[:lower:]"); CODENAME=$(lsb_release -cs); '
       pkg_once_cmd << 'echo "deb http://repos.mesosphere.io/${DISTRO} ${CODENAME} main" | tee /etc/apt/sources.list.d/mesosphere.list; '
-      pkg_once_cmd << 'apt-add-repository ppa:simon-kjellberg/pcp-daily; '
+      #pkg_once_cmd << 'apt-add-repository ppa:simon-kjellberg/pcp-daily; '
       pkg_once_cmd << 'export DEBIAN_FRONTEND=noninteractive; apt-get update; '
 
       # Initialize command list that gets run on every reboot
@@ -96,8 +96,8 @@ Vagrant.configure("2") do |config|
       pkg_once_cmd << "apt-get -y install ntp; "
 
       # Install Performance Copilot
-      pkg_once_cmd << "apt-get -y install pcp pcp-webapi; "
-      pkg_once_cmd << "sed -i 's,PMCD_REQUEST_TIMEOUT=1,PMCD_REQUEST_TIMEOUT=10,' /etc/pcp/pmwebd/pmwebd.options; "
+      #pkg_once_cmd << "apt-get -y install pcp pcp-webapi; "
+      #pkg_once_cmd << "sed -i 's,PMCD_REQUEST_TIMEOUT=1,PMCD_REQUEST_TIMEOUT=10,' /etc/pcp/pmwebd/pmwebd.options; "
 
       # Update hosts file
       [ninfos[:master], ninfos[:slave]].flatten.each_with_index do |host, i|

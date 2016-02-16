@@ -1,0 +1,8 @@
+{
+    "id":          "peekachu",
+    "dockerimage": "peekachu",
+    "mem":         "128",
+    "sla":         "singleton",
+    "nodetype":    "analytics",
+    "notmetered":  true
+}

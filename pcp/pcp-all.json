@@ -1,0 +1,41 @@
+{
+    "id":          "pcp-all",
+    "dockerimage": "pcp-all",
+    "mem":         "128",
+    "sla":         "singleton",
+    "nodetype":    "analytics",
+    "notmetered":  true,
+    "privileged": true,
+    "volumes": [
+        {
+	    "host_path": "/var/log",
+            "container_path":"/var/log",
+            "mode":"rw"
+        },
+        {   "host_path": "/sys",
+            "container_path":"/sys",
+            "mode":"ro"
+        },
+        {
+            "host_path": "/etc/localtime",
+            "container_path":"/etc/localtime",
+            "mode":"ro"
+        },
+        {
+            "host_path": "/var/lib/docker",
+            "container_path":"/var/lib/docker",
+            "mode":"ro"
+        },
+        {
+            "host_path": "/run",
+            "container_path":"/run",
+            "mode":"rw"
+        },
+        {
+            "host_path": "/var/log",
+            "container_path":"/var/log",																								
+	    "mode":"rw"
+        }
+																																       ]
+}																															       }
+
