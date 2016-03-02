@@ -37,6 +37,6 @@ RUN go get -d github.com/att-innovate/charmander-peekachu \
 
 WORKDIR /tmp/go/src/github.com/att-innovate/charmander-peekachu
 
-CMD go run main/main.go -v=0 -logtostderr -config ./examples/config.json && tail -f dev/null
+CMD go run main/main.go -v=0 -logtostderr -config ./examples/config.json -torc false && tail -f dev/null
 
 
