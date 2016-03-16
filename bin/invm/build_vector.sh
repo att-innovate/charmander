@@ -5,6 +5,7 @@ DIR=$PWD
 
 VECTOR_DIR=/vagrant/vector/vector
 DATACOLLECTOR_DIR=/vagrant/vector/datacollector
+PCP_DIR=/vagrant/vector/pcp
 
 cd $VECTOR_DIR &&
     image_name="vector" &&
@@ -29,3 +30,4 @@ cd $DATACOLLECTOR_DIR &&
     image_name="datacollector" &&
 	echo "Building $image_name" &&
 	docker build -t $image_name .
+

@@ -11,4 +11,9 @@ do
     vagrant ssh -c "sudo /vagrant/bin/invm/build_vector.sh" $ANALYTICS_NODE
 done
 
+for SLAVE_NODE in $(cat ./node_slaves.txt)
+do
+    vagrant ssh -c "sudo /vagrant/bin/invm/build_pcp.sh" $SLAVE_NODE
+done
+
 cd - > /dev/null

@@ -2,10 +2,9 @@
     "id":          "pcp-all",
     "dockerimage": "pcp-all",
     "mem":         "128",
-    "sla":         "singleton",
-    "nodetype":    "analytics",
+    "sla":         "one-per-node",
     "notmetered":  true,
-    "privileged": true,
+    "privileged":  true,
     "volumes": [
         {
 	    "host_path": "/var/log",
@@ -34,7 +33,7 @@
         {
             "host_path": "/var/log",
             "container_path":"/var/log",																								
-	    "mode":"rw"
+	        "mode":"rw"
         }
 																																       ]
 }																															       }

@@ -95,10 +95,6 @@ Vagrant.configure("2") do |config|
       # Install ntp
       pkg_once_cmd << "apt-get -y install ntp; "
 
-      # Install Performance Copilot
-      #pkg_once_cmd << "apt-get -y install pcp pcp-webapi; "
-      #pkg_once_cmd << "sed -i 's,PMCD_REQUEST_TIMEOUT=1,PMCD_REQUEST_TIMEOUT=10,' /etc/pcp/pmwebd/pmwebd.options; "
-
       # Update hosts file
       [ninfos[:master], ninfos[:slave]].flatten.each_with_index do |host, i|
         pkg_once_cmd << "echo '#{host[:ip]} #{host[:hostname]}' >> /etc/hosts; "
