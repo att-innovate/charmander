@@ -12,7 +12,7 @@ BOX_NAME = "ubuntu-dev-trusty"
 BOX_URI = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
 # Platform Package Versiona
-MESOS_PACKAGE_VERSION = '0.24.1-0.2.35.ubuntu1404'
+MESOS_PACKAGE_VERSION = '0.28.0-2.0.16.ubuntu1404'
 DOCKER_PACKAGE_VERSION = '1.7.1'
 GO_PACKAGE_VERSION = '1.5.1'
 
